@@ -1,0 +1,32 @@
+# --- FILE AUSILIARI DI COMPILAZIONE LATEX ---
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.lol
+*.synctex.gz
+
+# --- FILE DI TRACCIAMENTO LATEXMK ---
+*.fdb_latexmk
+*.fls
+
+# --- BIBLIOGRAFIA E GLOSSARI (Biber/BibLaTeX) ---
+*.bcf
+*.bbl
+*.blg
+*.run.xml
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# --- METADATI PDF/A ---
+*.xmpdata
+*.xmpi
+
+# --- CARTELLA MINTED ---
+minted-caches/
