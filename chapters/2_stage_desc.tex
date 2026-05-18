@@ -2,76 +2,59 @@
 \label{chap:descrizione-stage}
 
 \section{Introduzione al progetto}
-\begin{figure}[H] 
-    \centering 
-    \includegraphics[alt={Testo alternativo dell'immagine}, width=0.5\columnwidth]{img/pk_estate.jpeg}
-    \caption{Caption}
-    \label{fig:pk_estate}
-\end{figure}
-\lipsum[1]
+\noindent Il progetto consiste nello sviluppo di un'applicazione multipiattaforma per le note spesa, progettata per supportare l'ufficio amministrativo nelle attività quotidine. L'applicazione mobile dovrà essere cross-platform, obiettivo che sarà raggiunto utilizzando il framework \gls{dotnetmauig} di Microsoft, che consente di scrivere l'interfaccia e la logica di business usando \gls{csharpg} e \gls{xamlg}, permettendo di creare applicazioni per iOS e Android con un unico codice base. La comunicazione tra l'applicazione mobile e il sistema centrale avverà tramite \gls{apirestg}, garantendo così un'integrazione fluida ed efficiente con l'infrastruttura esistente. 
+
+
+\section{Contesto aziendale}
+\noindent Durante il periodo di stage ho avuto modo di interagire costantemente con i membri del team di lavoro, in particolare con il tutor aziendale, il quale si è sempre dimostrato disponibile a fornire supporto e chiarimenti riguardo alle attività da svolgere e ai dubbi relativi al progetto. 
+Il confronto con il tutor avveniva principalmente in presenza, attraverso incontri periodici in cui venivano monitorati l'andamento del lavoro e le eventuali difficoltà incontrate. In tali occasioni venivano inoltre pianificate le attività successive, definendo in modo chiaro gli obiettivi da raggiungere. 
+Oltre agli incontri programmati, era possibile confrontarsi con il tutor per eventuali chiarimenti, garantendo così un supporto costante durante lo svolgimento delle attività.
+Il supporto del tutor si è rivelato utile per comprendere le dinamiche aziendali e le aspettative del progetto, favorendo un inserimento più consapevole nel contesto lavorativo. 
+
 
 \section{Analisi preventiva dei rischi}
-
-Durante la fase di analisi iniziale sono stati individuati alcuni possibili rischi a cui si potrà andare incontro.
-Si è quindi proceduto a elaborare delle possibili soluzioni per far fronte a tali rischi.
-
-\begin{risk}{Performance del simulatore hardware}
-    \riskdescription{le performance del simulatore hardware e la comunicazione con questo potrebbero risultare lenti o non abbastanza buoni da causare il fallimento dei test}
-    \risksolution{coinvolgimento del responsabile a capo del progetto relativo il simulatore hardware}
-    \label{risk:hardware-simulator} 
+\noindent Durante la fase di analisi iniziale sono stati individuati alcuni rischi potenziali legati allo sviluppo del progetto e all'adozione di nuove tecnologie.
+Sono state quindi elaborate delle possibili soluzioni per far fronte a tali criticità.
+\begin{risk}{Inesperienza con le tecnologie adottate}
+    \riskdescription{il progetto prevede l'utilizzo di \gls{csharpg} e \gls{xamlg}, \gls{dotnetmauig}, oltre all'editor Visual Studio. Tali tecnologie non erano state precedentemente utilizzate e ciò potrebbe rallentare i tempi di implementazione}
+    \risksolution{si è deciso di dedicare una fase iniziale all'apprendimento tramite documentazione ufficiale e tutorial, affiancata alla realizzazione di piccoli progetti di prova al fine di acquisire familiarità e competenze necessarie prima dello sviluppo del progetto}
+    \label{risk:tecnologie-nuove} 
 \end{risk}
-
-\section{Requisiti e obiettivi}
-
-
-\rowcolors{1}{}{tableGray}
-\begin{longtable}{|p{2.25cm}|p{7.75cm}|p{2.25cm}|}
-    \hline
-    \multicolumn{1}{|c|}{\textbf{A}} & \multicolumn{1}{c|}{\textbf{B}}\\ 
-    \hline 
-    \endfirsthead
-    \rowcolor{white}
-    \multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continuo della tabella}}\\
-    \hline
-    \multicolumn{1}{|c|}{\textbf{A}} & \multicolumn{1}{c|}{B}\\ \hline 
-    \endhead
-    \hline
-    \rowcolor{white}
-    \multicolumn{3}{|r|}{{Continua nella prossima pagina...}}\\
-    \hline
-    \endfoot
-    \endlastfoot 
-
-    AA & BB \\
-    \hline
-    AA & BB \\
-    \hline
-    AA & BB \\
-    \hline
-    AA & BB \\
-    \hline
-    \hiderowcolors
-    \caption{Lorem.}
-    \label{tab:requisiti_obbiettivi}
-\end{longtable}
+\begin{risk}{Gestione delle scadenze e pianificazione}
+    \riskdescription{il progetto potrebbe subire ritardi a causa di una stima non corretta dei tempi o delle risorse necessarie, oppure per l'insorgere di imprevisti tecnici o bug complessi da risolvere}
+    \risksolution{le attività sono state pianificate in modo realistico e incrementale, monitorando costantemente l'avanzamento e prevedendo margini temporali per la gestione degli imprevisti. Sono state inoltre effettuate revisioni periodiche per individuare e risolvere tempestivamente eventuali criticità}
+    \label{risk:scadenze-pianificazione} 
+\end{risk}
 
 
 \section{Pianificazione}
-\begin{figure}[H]
+\begin{table}[H]
     \centering
-    \includegraphics[alt={Testo alternativo dell'immagine}, width=0.5\columnwidth]{img/pk_estate.jpeg}
-    \caption{Caption}
-    \label{fig:pk_estate_2}
-\end{figure}
-\lipsum[1]
-
-\subsection{subsection}
-\lipsum[1]
-
-\subsubsection{subsubsection}
-\lipsum[1]
-
-\paragraph{paragraph}
-\lipsum[1]
+    \rowcolors{2}{}{tableGray}
+    \begin{tabularx}{\textwidth}{|M{2cm}|M{1cm}|Y|}
+        \hline
+        \textbf{Settimana} & \textbf{Ore} & \textbf{Attività}\\ 
+        \hline
+        1 & 32 & Introduzione al progetto e alle tecnologie da utilizzare. Analisi iniziale dei requisiti e delle funzionalità richieste del sistema. \\
+        \hline
+        2 & 40 & Studio delle tecnologie \gls{csharpg}, \gls{xamlg} e del framework \gls{dotnetmauig}, con approfondimento del pattern \gls{mvvmg}. Studio delle metodologie di sviluppo delle API REST e prima stesura dell'analisi dei requisiti funzionali e non funzionali. \\
+        \hline
+        3 & 40 & Conclusione della fase di studio e completamento dell'analisi dei requisiti. Progettazione dell'architettura dell'applicazione e avvio dello sviluppo. \\
+        \hline
+        4 & 40 & Sviluppo delle principali funzionalità dell'applicazione mobile e implementazione dell'interfaccia grafica. \\
+        \hline
+        5 & 40 & Prosecuzione dello sviluppo dell'applicazione e integrazione delle funzionalità implementate. \\
+        \hline
+        6 & 32 & Sviluppo dei web services per la gestione del flusso di dati tra l'ERP aziendale e l'applicazione mobile. \\
+        \hline
+        7 & 40 & Implementazione delle procedure di integrazione con il gestionale, attività di testing e validazione del progetto. \\
+        \hline
+        8 & 40 & Redazione della documentazione tecnica del sistema e del manuale utente. \\
+        \hline
+    \end{tabularx}
+    \vspace{8pt}
+    \caption{Pianificazione del lavoro}
+    \label{tab:pianificazione}
+\end{table}
 
 \newpage

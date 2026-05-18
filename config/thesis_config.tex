@@ -69,14 +69,15 @@
 % #1: Title
 \newenvironment{risk}[1]{
     \refstepcounter{riskcounter} % increment counter
-    \par \noindent % start new paragraph
-    \textbf{\arabic{riskcounter}. #1} % display the title before the content of the environment is displayed
+    \par\vspace{1em}\noindent % 1. Spazio verticale sopra il titolo
+    \textbf{\arabic{riskcounter}. #1}\par\nopagebreak % display the title before the content of the environment is displayed
+    \begingroup\leftskip=2em\parindent=0pt % 2. Aggiunge un rientro a sinistra per tutto il contenuto del rischio
 }{
-    \par\medskip
+    \par\endgroup
 }
 \newcommand{\riskname}{Rischio}
-\newcommand{\riskdescription}[1]{\textbf{\\Descrizione:} #1.}
-\newcommand{\risksolution}[1]{\textbf{\\Soluzione:} #1.}
+\newcommand{\riskdescription}[1]{\textbf{Descrizione:} #1.\par\nopagebreak\smallskip}
+\newcommand{\risksolution}[1]{\textbf{Soluzione:} #1.}
 
 % Apply fancy styling to pages
 \pagestyle{fancy}
@@ -178,3 +179,7 @@
 
 % Break lines in code blocks whe using inputminted
 \setminted{breaklines}
+
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
