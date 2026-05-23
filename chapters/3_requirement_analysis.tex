@@ -1,10 +1,24 @@
 \chapter{Analisi dei requisiti}
 \label{chap:analisi-requisiti}
 
+\section{Panoramica e Attori}
+\noindent Come illustrato nel capitolo introduttivo, il progetto di stage mira a estendere l'ecosistema \gls{ergteam} con una nuova funzionalità dedicata alla gestione delle note spesa. Poiché l'applicativo base risulta già consolidato e provvisto di funzionalità cardine come il processo di autenticazione e la navigazione principale, la presente analisi dei requisiti si focalizzerà esclusivamente sul nuovo dominio applicativo. Di conseguenza, i flussi preesitenti verranno considerati come parte integrante del sistema, e non saranno oggetto di analisi dettagliata in questa fase. 
+
+\subsection{Attori del sistema}
+\noindent Gli attori rappresentano le entità (utenti fisici o sistemi esterni) che interagiscono in modo diretto con l'applicazione. Per il progetto sviluppato, sono stati individuati i seguenti attori principali:
+\begin{itemize}
+    \item \textbf{Dipendente:} rappresenta un dipendente dell'azienda che ha già effettuato l'accesso all'applicazione mobile tramite le proprie credenziali. Esso interagisce con la nuova sezione per consultare lo storico delle proprie spese inserite e per inserire, allegando evenutali fotografie, nuove note spesa da inoltrare al sistema.
+    
+    \item \textbf{Azure Content Understanding (Sistema AI):} sistema esterno basato su intelligenza artificiale, interrogato dall'applicazione per l'estrazione automatica dei dati dalle fotografie degli scontrini, al fine di semplificare e velocizzare la compliazione della nota spesa da parte del dipendente.
+\end{itemize}
+
+
+
+
 \section{Casi d'uso}
 Per lo studio dei casi di utilizzo del prodotto sono stati creati dei diagrammi.
-I diagrammi dei casi d'uso (in inglese \textit{Use Case Diagram}) sono diagrammi di tipo \gls{uml} dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
-Essendo il progetto finalizzato alla creazione di un tool \gls{TermineSenzaAcronimo} per l'automazione di un processo, le interazioni da parte dell'utilizzatore devono essere ovviamente ridotte allo stretto necessario. Per questo motivo i diagrammi d'uso risultano semplici e in numero ridotto.
+I diagrammi dei casi d'uso sono diagrammi di tipo dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
+Essendo il progetto finalizzato alla creazione di un tool per l'automazione di un processo, le interazioni da parte dell'utilizzatore devono essere ovviamente ridotte allo stretto necessario. Per questo motivo i diagrammi d'uso risultano semplici e in numero ridotto.
 
 \begin{figure}[H]
     \vspace{2em}
