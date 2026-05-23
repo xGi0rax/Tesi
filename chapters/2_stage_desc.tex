@@ -2,7 +2,7 @@
 \label{chap:descrizione-stage}
 
 \section{Introduzione al progetto}
-\noindent Il progetto consiste nello sviluppo di un'applicazione multipiattaforma per le note spesa, progettata per supportare l'ufficio amministrativo nelle attività quotidine. L'applicazione mobile dovrà essere cross-platform, obiettivo che sarà raggiunto utilizzando il framework \gls{dotnetmauig} di Microsoft, che consente di scrivere l'interfaccia e la logica di business usando \gls{csharpg} e \gls{xamlg}, permettendo di creare applicazioni per iOS e Android con un unico codice base. La comunicazione tra l'applicazione mobile e il sistema centrale avverà tramite \gls{apirestg}, garantendo così un'integrazione fluida ed efficiente con l'infrastruttura esistente. 
+\noindent Il progetto consiste nello sviluppo di un'applicazione multipiattaforma per le note spesa, progettata per supportare l'ufficio amministrativo nelle attività quotidiane. L'applicazione mobile dovrà essere cross-platform, obiettivo che sarà raggiunto utilizzando il framework \gls{dotnetmauig} di Microsoft, che consente di scrivere l'interfaccia e la logica di business usando \gls{csharpg} e \gls{xamlg}, permettendo di creare applicazioni per iOS e Android con un unico codice base. La comunicazione tra l'applicazione mobile e il sistema centrale avverà tramite \gls{apirestg}, garantendo così un'integrazione fluida ed efficiente con l'infrastruttura esistente. 
 
 
 \section{Contesto aziendale}
@@ -17,13 +17,31 @@ Il supporto del tutor si è rivelato utile per comprendere le dinamiche aziendal
 Sono state quindi elaborate delle possibili soluzioni per far fronte a tali criticità.
 \begin{risk}{Inesperienza con le tecnologie adottate}
     \riskdescription{il progetto prevede l'utilizzo di \gls{csharpg} e \gls{xamlg}, \gls{dotnetmauig}, oltre all'editor Visual Studio. Tali tecnologie non erano state precedentemente utilizzate e ciò potrebbe rallentare i tempi di implementazione}
+    \riskprobability{alta}
+    \riskimpact{medio}
     \risksolution{si è deciso di dedicare una fase iniziale all'apprendimento tramite documentazione ufficiale e tutorial, affiancata alla realizzazione di piccoli progetti di prova al fine di acquisire familiarità e competenze necessarie prima dello sviluppo del progetto}
     \label{risk:tecnologie-nuove} 
 \end{risk}
-\begin{risk}{Gestione delle scadenze e pianificazione}
-    \riskdescription{il progetto potrebbe subire ritardi a causa di una stima non corretta dei tempi o delle risorse necessarie, oppure per l'insorgere di imprevisti tecnici o bug complessi da risolvere}
-    \risksolution{le attività sono state pianificate in modo realistico e incrementale, monitorando costantemente l'avanzamento e prevedendo margini temporali per la gestione degli imprevisti. Sono state inoltre effettuate revisioni periodiche per individuare e risolvere tempestivamente eventuali criticità}
-    \label{risk:scadenze-pianificazione} 
+\begin{risk}{Compatibilità cross-platform}
+    \riskdescription{l'applicazione deve funzionare correttamente sia su Android che su iOS utilizzando un unico codice base tramite \gls{dotnetmauig}. Potrebbero sorgere problemi di compatibilità o di comportamento diverso tra le piattaforme, complicando lo sviluppo e il testing}
+    \riskprobability{media}
+    \riskimpact{medio}
+    \risksolution{eseguire test continui su entrambe le piattaforme durante lo sviluppo, individuando tempestivamente eventuali problemi di compatibilità. Inoltre, è possibile consultare la documentazione ufficiale e le community di sviluppatori per trovare soluzioni a problemi comuni}
+    \label{risk:compatibilita-cross-platform} 
+\end{risk}
+\begin{risk}{Problemi di comunicazione con le API REST}
+    \riskdescription{la comunicazione tra l'applicazione mobile e il sistema gestionale avverrà tramite \gls{apirestg}. Potrebbero verificarsi problemi di comunicazione, come errori di rete, problemi di autenticazione, timeout o errori nelle chiamate API, che potrebbero compromettere il corretto invio e recupero dei dati}
+    \riskprobability{media}
+    \riskimpact{alto}
+    \risksolution{è importante implementare una gestione robusta degli errori e dei casi di fallimento nella comunicazione con le API, prevedendo meccanismi di retry, notifiche all'utente e log dettagliati per facilitare la diagnosi e la risoluzione dei problemi}
+    \label{risk:comunicazione-api-rest} 
+\end{risk}
+\begin{risk}{Gestione sincronizzazione dei dati ERP}
+    \riskdescription{l'integrazione con il sistema \gls{erp} aziendale richiede una sincronizzazione accurata dei dati tra l'applicazione mobile e il gestionale. Potrebbero sorgere problemi legati alla compatibilità dei dati e alla corretta sincronizzazione delle informazioni tra i due sistemi}
+    \riskprobability{media}
+    \riskimpact{medio}
+    \risksolution{definire formati di dati chiari e standardizzati per la comunicazione tra l'applicazione mobile e il sistema ERP, implementando meccanismi di validazione dei dati e test progressivi sull'integrazione tramite casi d'uso realistici}
+    \label{risk:sincronizzazione-dati-erp} 
 \end{risk}
 
 
