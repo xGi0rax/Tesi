@@ -14,6 +14,7 @@
 # --- BIBLIOGRAFIA E GLOSSARI (Biber/BibLaTeX) ---
 *.bcf
 *.bbl
+*.bbl-SAVE-ERROR
 *.blg
 *.run.xml
 *.acn
