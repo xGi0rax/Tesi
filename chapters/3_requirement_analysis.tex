@@ -7,7 +7,7 @@
 \subsection{Attori del sistema}
 \noindent Gli attori rappresentano le entità (utenti fisici o sistemi esterni) che interagiscono con l'applicazione. Per il progetto sviluppato, sono stati individuati i seguenti attori principali:
 \begin{itemize}
-    \item \textbf{Dipendente (Utente):} rappresenta un dipendente dell'azienda che ha già effettuato l'accesso all'applicazione \gls{ergteam} tramite le proprie credenziali. Esso interagisce con la nuova sezione per consultare lo storico delle proprie spese inserite e per inserire, allegando evenutali fotografie, nuove note spesa da inoltrare al sistema.
+    \item \textbf{Dipendente (Utente):} rappresenta un dipendente dell'azienda che ha già effettuato l'accesso all'applicazione \gls{ergteam} tramite le proprie credenziali. Esso interagisce con la nuova sezione per consultare lo storico delle proprie spese inserite e per inserire nuove note spesa da inoltrare al sistema.
     
     \item \textbf{Azure Content Understanding (Sistema di \gls{ia}):} sistema esterno basato su intelligenza artificiale, interrogato dall'applicazione per l'estrazione automatica dei dati dalle fotografie degli scontrini, al fine di semplificare e velocizzare la compliazione della nota spesa da parte del dipendente.
 \end{itemize}
@@ -28,15 +28,22 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
           \item \textbf{Scenario alternativo}: eventuali scenari alternativi che possono verificarsi durante l'esecuzione del caso d'uso, con le relative condizioni e conseguenze.
       \end{itemize} 
 
-% \begin{figure}[H]
-%     \vspace{2em}
-%     \centering
-%     \includegraphics[alt={Testo alternativo dell'immagine}, width=0.75\columnwidth]{img/usecase/scenario-principale.jpeg}
-%     \caption{Use Case 0: Scenario principale}
-%     \label{fig:scenario_principale}
-% \end{figure}
+\begin{figure}[H]
+    \vspace{2em}
+    \centering
+    \includegraphics[alt={Note spesa: schermata principale}, width=0.95\columnwidth]{img/usecase/Ucprinc.jpg}
+    \caption{Note spesa: Schermata principale}
+    \label{fig:schermata_principale}
+\end{figure}
 
 \begin{usecase}{1}{Visualizzazione lista resoconti mensili}
+    \begin{figure}[H]
+        \vspace{2em}
+        \centering
+        \includegraphics[alt={Use Case 1: Visualizzazione lista resoconti mensili}, width=0.90\columnwidth]{img/usecase/UC1.jpg}
+        \caption{UC1: Visualizzazione lista resoconti mensili}
+        \label{fig:UC1}
+    \end{figure}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente visualizza la lista dei resoconti mensili relativi alle note spesa presenti nel sistema.}
     \usecasepre{L'utente ha effettuato l'accesso all'applicazione e ha navigato nella sezione dedicata alle note spesa.}
@@ -85,6 +92,13 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
 \end{usecase}
 
 \begin{usecase}{3}{Sincronizzazione note spesa locali}
+    \begin{figure}[H]
+        \vspace{2em}
+        \centering
+        \includegraphics[alt={Use Case 3: Sincronizzazione note spesa locali}, width=0.95\columnwidth]{img/usecase/UC3.jpg}
+        \caption{UC3: Sincronizzazione note spesa locali}
+        \label{fig:UC3}
+    \end{figure}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente vuole inviare al server tutte le note spesa contrassegnate come locali presenti nel sistema.}
     \usecasepre{L'utente visualizza la schermata iniziale ed è presente almeno una nota spesa non sincronizzata nel sistema.}
@@ -121,7 +135,15 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_visualizzazione_riepilogo_note_sincronizzazione}
 \end{usecase}
 
-\begin{usecase}{4}{Accesso schermata inserimento.}
+\newpage
+\begin{usecase}{4}{Accesso schermata inserimento}
+    \begin{figure}[H]
+        \vspace{2em}
+        \centering
+        \includegraphics[alt={Use Case 4: Accesso schermata inserimento}, width=1\columnwidth]{img/usecase/UC4.jpg}
+        \caption{UC4: Accesso schermata inserimento}
+        \label{fig:UC4}
+    \end{figure}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente accede alla schermata di inserimento di una nuova nota spesa.}
     \usecasepre{L'utente si trova nella schermata principale o nella schermata di visualizzazione della lista note.}
@@ -151,7 +173,6 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \usecasealt{
         \begin{itemize}
             \item \textbf{Validazione dati:} il sistema segnala errori nei dati inseriti e interrompe il salvataggio (\ref{uc:uc_errore_validazione_nota}).
-            \item \textbf{Elaborazione automatica:} il sistema estrae i dati dalla fotografia tramite il modulo di intelligenza artificiale e li propone all'utente (\ref{uc:uc_analisi_foto_scontrino}).
             \item \textbf{Assenza connessione:} se il dispositivo è offline, la nota viene salvata localmente con stato "locale" (\ref{uc:uc_inserimento_nota_locale}).
         \end{itemize}
     }
@@ -173,24 +194,9 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_inserimento_nota_locale}
 \end{usecase}
 
-\begin{usecase}{4.3}{Inserimento nota sincronizzata}
+\begin{usecase}{4.3}{Inserimento nota offline}
     \usecaseactors{Utente.}
-    \usecasedesc{L'utente vuole inserire una nuova nota spesa sincronizzata nel sistema.}
-    \usecasepre{L'utente ha effettuato l'accesso alla schermata di inserimento di una nuova nota spesa.}
-    \usecasepost{La nuova nota spesa sincronizzata viene salvata nel sistema.}
-    \usecaseprin{
-        \begin{itemize}
-            \item L'utente inserisce tutti i campi obbligatori per la creazione di una nuova nota spesa.
-            \item L'utente non seleziona l'opzione "Posticipa caricamento".
-            \item L'utente preme il pulsante "SALVA NOTA" per confermare l'inserimento.
-        \end{itemize}
-    }
-    \label{uc:uc_inserimento_nota_sincronizzata}
-\end{usecase}
-
-\begin{usecase}{4.4}{Inserimento nota sincronizzata offline}
-    \usecaseactors{Utente.}
-    \usecasedesc{L'utente vuole inserire una nuova nota spesa sincronizzata nel sistema.}
+    \usecasedesc{L'utente vuole inserire una nuova nota spesa nel sistema.}
     \usecasepre{L'utente ha inserito tutti i campi obbligatori e non ha selezionato l'opzione "Posticipa caricamento", ma il dispositivo è offline.}
     \usecasepost{La nuova nota spesa viene salvata nel sistema come nota locale.}
     \usecaseprin{
@@ -198,10 +204,10 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
             \item L'utente preme il pulsante "SALVA NOTA" per confermare l'inserimento.
         \end{itemize}
     }
-    \label{uc:uc_inserimento_nota_sincronizzata_offline}
+    \label{uc:uc_inserimento_nota_offline}
 \end{usecase}
 
-\begin{usecase}{4.5}{Visualizzazione errore validazione dati}
+\begin{usecase}{4.4}{Visualizzazione errore validazione dati}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente tenda di salvare una nota spesa con campi non compilati correttamente.}
     \usecasepre{L'utente ha premuto "SALVA NOTA" avendo omesso dati obbligatori o avendo inserito dati in formati non validi.}
@@ -216,7 +222,22 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_errore_validazione_nota}
 \end{usecase}
 
-\begin{usecase}{5}{Compilazione dati generali spesa.}
+\begin{figure}[H]
+    \vspace{2em}
+    \centering
+    \includegraphics[alt={Scenario di aggiunta di una nota spesa}, width=0.95\columnwidth]{img/usecase/UCAggiunta.jpg}
+    \caption{Nota spesa: Aggiunta nota}
+    \label{fig:UCAggiunta}
+\end{figure}
+
+\begin{usecase}{5}{Compilazione dati generali spesa}
+    \begin{figure}[H]
+        \vspace{2em}
+        \centering
+        \includegraphics[alt={Use Case 5: Compilazione dati generali spesa}, width=1\columnwidth]{img/usecase/UC5.jpg}
+        \caption{UC5: Compilazione dati generali spesa}
+        \label{fig:UC5}
+    \end{figure}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente compila i campi di input per inserire i dati della spesa.}
     \usecasepre{L'utente ha effettuato l'accesso alla schermata di inserimento di una nuova nota spesa.}
@@ -231,13 +252,17 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
             \item L'utente indica il numero di dipendenti coinvolti nella spesa (\ref{uc:uc_inserimento_numero_dipendenti_spesa}).
             \item L'utente indica la presenza del cliente (\ref{uc:uc_spunta_presenza_cliente}).
             \item L'utente può inserire le note aggiuntive (\ref{uc:uc_inserimento_note_aggiuntive}).
-            \item L'utente può allegare la foto dello scontrino (\ref{uc:uc_inserimento_foto_scontrino}).
+            \item L'utente allega la foto dello scontrino (\ref{uc:uc_inserimento_foto_scontrino}).
+            \item L'utente inserisce il numero documento dello scontrino (\ref{uc:uc_inserimento_nrdoc_scontrino}).
+            \item L'utente inserisce la data e l'ora dello scontrino (\ref{uc:uc_inserimento_data_ora_scontrino}).
+            \item L'utente inserisce la ragione sociale dello scontrino (\ref{uc:uc_inserimento_ragione_sociale_scontrino}).
+            \item L'utente inserisce la partita IVA dello scontrino (\ref{uc:uc_inserimento_partita_iva_scontrino}).
         \end{itemize}
     }
     \label{uc:uc_compilazione_dati_generali_spesa}
 \end{usecase}
 
-\begin{usecase}{5.1}{Selezione cliente spesa.}
+\begin{usecase}{5.1}{Selezione cliente spesa}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente seleziona il cliente da associare alla spesa.}
     \usecasepre{L'utente è nella schermata di inserimento della nota spesa.}
@@ -252,7 +277,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_selezione_cliente_spesa}
 \end{usecase}
 
-\begin{usecase}{5.2}{Selezione date spesa.}
+\begin{usecase}{5.2}{Selezione date spesa}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente vuole selezionare le date di inizio e di fine della spesa.}
     \usecasepre{L'utente è nella schermata di inserimento della nota spesa.}
@@ -361,7 +386,22 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_inserimento_note_aggiuntive}
 \end{usecase}
 
-\begin{usecase}{7}{Inserimento foto scontrino.}
+\begin{figure}[H]
+    \vspace{2em}
+    \centering
+    \includegraphics[alt={Scenario di inserimento della foto}, width=0.85\columnwidth]{img/usecase/UCFoto.jpg}
+    \caption{Nota spesa: Inserimento foto}
+    \label{fig:UCFoto}
+\end{figure}
+
+\begin{usecase}{7}{Inserimento foto scontrino}
+    \begin{figure}[H]
+        \vspace{2em}
+        \centering
+        \includegraphics[alt={Use Case 7: Inserimento foto scontrino}, width=1\columnwidth]{img/usecase/UC7.jpg}
+        \caption{UC7: Inserimento foto scontrino}
+        \label{fig:UC7}
+    \end{figure}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente inserisce una foto dello scontrino.}
     \usecasepre{L'utente è nella schermata di inserimento della nota spesa e ha selezionato la funzionalità di inserimento foto scontrino.}
@@ -375,7 +415,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_inserimento_foto_scontrino}
 \end{usecase}
 
-\begin{usecase}{7.1}{Analisi foto scontrino.}
+\begin{usecase}{7.1}{Analisi foto scontrino}
     \usecaseactors{Sistema \gls{ia}.}
     \usecasedesc{Il sistema analizza la foto dello scontrino per estrarre i dati.}
     \usecasepre{L'utente ha inserito una foto dello scontrino.}
@@ -389,21 +429,21 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_analisi_foto_scontrino}
 \end{usecase}
 
-\begin{usecase}{8}{Pop-up errore estrazione.}
+\begin{usecase}{7.2}{Pop-up errore estrazione}
     \usecaseactors{Utente, Sistema \gls{ia}.}
     \usecasedesc{Il sistema mostra un messaggio di errore}
-    \usecasepre{L'utente ha inserito una foto.}
+    \usecasepre{L'utente ha inserito una foto e il sistema IA ha avviato l'analisi.}
     \usecasepost{Il sistema mostra un messaggio di errore.}
     \usecaseprin{
         \begin{itemize}
-            \item La connessione è assente oppure il sistema \gls{ia} non riesce ad estrarre i dati dalla foto allegata.
+            \item La connessione è assente oppure il sistema \gls{ia} non riesce ad estrarre alcun dato dalla foto allegata.
             \item L'utente visualizza un messaggio di errore.
         \end{itemize}
     }
     \label{uc:uc_pop-up_errore_estrazione}
 \end{usecase}
 
-\begin{usecase}{9}{Pop-up verifica importo estratto.}
+\begin{usecase}{7.3}{Pop-up verifica importo estratto}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente verifica l'importo estratto dalla foto allegata.}
     \usecasepre{L'utente ha precedentemente inserito un importo e successivamente ha inserito una foto.}
@@ -417,7 +457,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_pop-up_verifica_importo_estratto}
 \end{usecase}
 
-\begin{usecase}{10}{Pop-up verifica data estratta.}
+\begin{usecase}{7.4}{Pop-up verifica data estratta}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente verifica la data estratta dalla foto allegata.}
     \usecasepre{L'utente ha inserito una foto.}
@@ -431,7 +471,59 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_pop-up_verifica_data_estratta}
 \end{usecase}
 
-\begin{usecase}{11}{Visualizzazione dati estratti.}
+\begin{usecase}{8}{Inserimento numero documento scontrino}
+    \usecaseactors{Utente.}
+    \usecasedesc{L'utente vuole inserire o modificare il numero del documento dello scontrino.}
+    \usecasepre{L'utente si trova nella schermata di inserimento e ha allegato una foto dello scontrino.}
+    \usecasepost{Il campo viene valorizzato con il valore inserito dall'utente.}
+    \usecaseprin{
+        \begin{itemize}
+            \item L'utente digita il testo nell'apposita area.
+        \end{itemize}
+    }
+    \label{uc:uc_inserimento_nrdoc_scontrino}
+\end{usecase}
+
+\begin{usecase}{9}{Inserimento data e ora scontrino}
+    \usecaseactors{Utente.}
+    \usecasedesc{L'utente vuole inserire o modificare la data e l'ora dello scontrino.}
+    \usecasepre{L'utente si trova nella schermata di inserimento e ha allegato una foto dello scontrino.}
+    \usecasepost{Il campo viene valorizzato con il valore inserito dall'utente.}
+    \usecaseprin{
+        \begin{itemize}
+            \item L'utente digita il testo nell'apposita area.
+        \end{itemize}
+    }
+    \label{uc:uc_inserimento_data_ora_scontrino}
+\end{usecase}
+
+\begin{usecase}{10}{Inserimento ragione sociale scontrino}
+    \usecaseactors{Utente.}
+    \usecasedesc{L'utente vuole inserire o modificare la ragione sociale dello scontrino.}
+    \usecasepre{L'utente si trova nella schermata di inserimento e ha allegato una foto dello scontrino.}
+    \usecasepost{Il campo viene valorizzato con il valore inserito dall'utente.}
+    \usecaseprin{
+        \begin{itemize}
+            \item L'utente digita il testo nell'apposita area.
+        \end{itemize}
+    }
+    \label{uc:uc_inserimento_ragione_sociale_scontrino}
+\end{usecase}
+
+\begin{usecase}{11}{Inserimento partita iva scontrino}
+    \usecaseactors{Utente.}
+    \usecasedesc{L'utente vuole inserire o modificare la partita iva dello scontrino.}
+    \usecasepre{L'utente si trova nella schermata di inserimento e ha allegato una foto dello scontrino.}
+    \usecasepost{Il campo viene valorizzato con il valore inserito dall'utente.}
+    \usecaseprin{
+        \begin{itemize}
+            \item L'utente digita il testo nell'apposita area.
+        \end{itemize}
+    }
+    \label{uc:uc_inserimento_partita_iva_scontrino}
+\end{usecase}
+
+\begin{usecase}{12}{Visualizzazione dati estratti}
     \usecaseactors{Utente, Sistema \gls{ia}.}
     \usecasedesc{L'utente visualizza i dati estratti dalla foto dello scontrino.}
     \usecasepre{L'utente ha inserito una foto e il sistema ha estratto correttamente i dati da essa.}
@@ -444,7 +536,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_visualizzazione_dati_estratti}
 \end{usecase}
 
-\begin{usecase}{12}{Rimozione foto allegata.}
+\begin{usecase}{13}{Rimozione foto allegata}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente vuole rimuovere una foto precedentemente caricata.}
     \usecasepre{Un'immagine è stata allegata ed eventuali dati estratti sono visibili.}
@@ -457,7 +549,15 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_rimozione_foto_allegata}
 \end{usecase}
 
-\begin{usecase}{13}{Inserimento multiplo di spese}
+\begin{figure}[H]
+    \vspace{2em}
+    \centering
+    \includegraphics[alt={Scenario di inserimento multiplo in una nota spesa}, width=0.90\columnwidth]{img/usecase/UCMultiplo.jpg}
+    \caption{Nota spesa: Inserimento multiplo}
+    \label{fig:UCMultiplo}
+\end{figure}
+
+\begin{usecase}{14}{Inserimento multiplo di spese}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente preme il pulsante "AGGIUNGI UN'ALTRA SPESA" per inserire un'ulteriore transazione all'interno della medesima nota spesa.}
     \usecasepre{L'utente ha compilato correttamente i dati di una prima spesa e ha valorizzato il campo Cliente.}
@@ -471,7 +571,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_aggiungi_altra_spesa}
 \end{usecase}
 
-\begin{usecase}{14}{Visualizzazione voce riepilogo spese}
+\begin{usecase}{15}{Visualizzazione voce riepilogo spese}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente visualizza una voce dedicata al riepilogo delle spese salvate temporaneamente tramite la funzionalità di inserimento multiplo.}
     \usecasepre{L'utente ha utilizzato almento una volta la funzionalità di inserimento multiplo (\ref{uc:uc_aggiungi_altra_spesa}).}
@@ -480,14 +580,12 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
         \begin{itemize}
             \item L'utente visualizza la voce "Riepilogo spese inserite" posta sotto il campo cliente.
             \item L'utente può espandere la voce per visualizzare l'elenco delle spese già inserite.
-            \item Il sistema espande la sezione nell'interfaccia corrente.
-            \item Per ogni spesa inserita vengono mostrati: tipologia, data e importo.
         \end{itemize}
     }
     \label{uc:uc_visualizzazione_voce_riepilogo_spese}
 \end{usecase}
 
-\begin{usecase}{15}{Visualizzazione riepilogo spese}
+\begin{usecase}{16}{Visualizzazione riepilogo spese}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente espande la sezione dedicata per visualizzare l'elenco delle spese salvate temporaneamente tramite la funzionalità di inserimento multiplo.}
     \usecasepre{L'utente ha cliccato sulla voce "Riepilogo spese inserite".}
@@ -495,13 +593,34 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \usecaseprin{
         \begin{itemize}
             \item Il sistema espande la sezione "Riepilogo spese inserite" nell'interfaccia corrente.
-            \item Per ogni spesa inserita vengono mostrati: tipologia, data e importo.
+            \item Per ogni spesa inserita vengono mostrati: tipologia, data, importo e un'icona a forma di cestino per rimuovere la spesa.
         \end{itemize}
     }
     \label{uc:uc_visualizzazione_riepilogo_spese}
 \end{usecase}
 
-\begin{usecase}{16}{Pop-up promemoria sincronizzazione}
+\begin{usecase}{17}{Rimozione spesa dal riepilogo}
+    \usecaseactors{Utente.}
+    \usecasedesc{L'utente vuole rimuovere una spesa dal riepilogo delle spese inserite temporaneamente.}
+    \usecasepre{L'utente ha cliccato sulla voce "Riepilogo spese inserite" e visualizza il riepilogo.}
+    \usecasepost{La spesa viene rimossa dal riepilogo e dal sistema.}
+    \usecaseprin{
+        \begin{itemize}
+            \item L'utente preme sull'icona a forma di cestino accanto alla spesa che desidera rimuovere.
+            \item Il sistema mostra un pop-up di conferma.
+            \item L'utente conferma la rimozione.
+        \end{itemize}
+    }
+    \usecasealt{
+        \begin{itemize}
+            \item L'utente seleziona "ANNULLA".
+            \item Il sisteam chiude il pop-up senza eliminare la spesa.
+        \end{itemize}
+    }
+    \label{uc:uc_rimozione_spesa_riepilogo}
+\end{usecase}
+
+\begin{usecase}{18}{Pop-up promemoria sincronizzazione}
     \usecaseactors{Utente.}
     \usecasedesc{Il sistema mostra un pop-up per ricordare all'utente di sincronizzare le note spesa locali.}
     \usecasepre{L'utente ha effettuato l'accesso all'applicazione e ha navigato nella sezione dedicata alle note spesa per la prima volta da quando ha aperto l'applicazione. È presente almeno una nota spesa locale non sincronizzata.}
@@ -515,7 +634,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_pop-up_promemoria_sincronizzazione}
 \end{usecase}
 
-\begin{usecase}{17}{Visualizzazione dettaglio mensile}
+\begin{usecase}{19}{Visualizzazione dettaglio mensile}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente visualizza la lista di tutte le note spesa appartenenti a uno specifico resoconto mensile.}
     \usecasepre{L'utente ha selezionato un resoconto mensile dalla schermata principale (\ref{uc:uc_visualizzazione_singolo_resoconto}).}
@@ -530,7 +649,15 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_visualizzazione_dettaglio_mensile}
 \end{usecase}
 
-\begin{usecase}{18}{Accesso schermata modifica}
+\begin{figure}[H]
+    \vspace{2em}
+    \centering
+    \includegraphics[alt={Scenario di modifica di una nota spesa}, width=0.90\columnwidth]{img/usecase/UCModifica.jpg}
+    \caption{Nota spesa: Modifica nota}
+    \label{fig:UCModifica}
+\end{figure}
+
+\begin{usecase}{20}{Accesso schermata modifica}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente vuole accedere alla schermata di modifica di una nota spesa.}
     \usecasepre{L'utente si trova nella schermata di dettaglio mensile.}
@@ -545,7 +672,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_accesso_modifica_nota}
 \end{usecase}
 
-\begin{usecase}{19}{Modifica nota spesa}
+\begin{usecase}{21}{Modifica nota spesa}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente modifica i dati di una nota spesa precedentemente salvata.}
     \usecasepre{L'utente ha effettuato l'accesso alla schermata di modifica di una nota (\ref{uc:uc_accesso_modifica_nota}).}
@@ -568,7 +695,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_modifica_nota_spesa}
 \end{usecase}
 
-\begin{usecase}{20}{Visualizzazione nota in sola lettura}
+\begin{usecase}{22}{Visualizzazione nota in sola lettura}
     \usecaseactors{Utente.}
     \usecasedesc{Il sistema disabilita la modifica di tutti i campi del form se la nota spesa caricata fa riferimento a una data storicizzata (precedente alla data minima consentita).}
     \usecasepre{L'utente si trova nella schermata di dettaglio mensile e ha selezionato una nota spesa per modificarla. La data della nota è antecedente al limite consentito.}
@@ -583,7 +710,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_nota_sola_lettura}
 \end{usecase}
 
-\begin{usecase}{21}{Eliminazione nota spesa locale}
+\begin{usecase}{23}{Eliminazione nota spesa locale}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente vuole eliminare definitivamente una nota spesa salvata localmente.}
     \usecasepre{L'utente si trova in modalità modifica di una nota con stato "locale".}
@@ -605,7 +732,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
     \label{uc:uc_eliminazione_nota_locale}
 \end{usecase}
 
-\begin{usecase}{22}{Sincronizzazione singola nota locale}
+\begin{usecase}{24}{Sincronizzazione singola nota locale}
     \usecaseactors{Utente.}
     \usecasedesc{L'utente vuole sincronizzare immediatamente una nota spesa salvata localmente.}
     \usecasepre{L'utente si trova in modalità modifica di una nota con stato "locale" e dispone di connessione a Internet.}
@@ -675,18 +802,23 @@ Per classificare i requisiti in modo univoco e strutturato, è stata adottata la
     RFO-1 & L'utente deve poter visualizzare la lista dei resoconti mensili delle proprie note spesa. & UC1, UC1.1 \\ \hline
     RFO-2 & L'utente deve poter filtrare i resoconti mensili in base all'anno desiderato. & UC2 \\ \hline
     RFO-3 & L'utente deve poter inserire una nuova nota spesa. & UC4, UC5 \\ \hline
-    RFO-4 & Il sistema deve validare i dati inseriti e impedire il salvataggio in caso di informazioni mancanti o errate. & UC4.5, UC5.3 \\ \hline
-    RFO-5 & L'utente deve poter aggiungere e accodare transazioni multiple all'interno di un singolo inserimento di nota spesa. & UC13, UC14, UC15 \\ \hline
-    RFO-6 & Il sistema deve gestire il salvataggio locale (offline) delle note in caso di assenza di rete o di scelta volontaria. & UC4.2, UC4.4 \\ \hline
-    RFO-7 & L'utente deve poter sincronizzare in blocco o singolarmente le note salvate in locale. & UC3, UC22 \\ \hline
-    RFO-8 & L'utente deve poter le note spesa appartenenti a un singolo resoconto mensile & UC17 \\ \hline
-    RFO-9 & L'utente deve poter eliminare una nota spesa esistente, purché non sia storicizzata. & UC21 \\ \hline
-    RFO-10 & Il sistema deve impedire la modifica (sola lettura) delle note spesa antecedenti alla data minima consentita. & UC20 \\ \hline
-    RFD-1 & L'utente deve poter allegare una fotografia dello scontrino per estrarne automaticamente i dati tramite \gls{ia}. & UC7, UC7.1 \\ \hline
-    RFD-2 & Il sistema deve gestire i conflitti tra i dati inseriti manualmente e quelli estratti dall'\gls{ia} tramite pop-up. & UC8, UC9, UC10 \\ \hline
-    RFD-3 & Il sistema deve ricordare all'utente, all'avvio del modulo, la presenza di note locali non sincronizzate. & UC16 \\
-    RFD-4 & L'utente deve poter accedere alla modalità modifica di una nota spesa. & UC18 \\ \hline
-    RFD-5 &  L'utente deve poter modificare una nota spesa esistente. & UC19 \\ \hline
+    RFO-4 & Il sistema deve validare i dati inseriti e impedire il salvataggio in caso di informazioni mancanti o errate. & UC4.4, UC5.3 \\ \hline
+    RFO-5 &  L'utente deve poter inserire una descrizione per ogni spesa. & UC6 \\ \hline
+    RFO-6 & L'utente deve poter allegare una fotografia dello scontrino per estrarne automaticamente i dati tramite \gls{ia}. & UC7, UC7.1 \\ \hline
+    RFO-7 & L'utente deve poter visualizzare e modificare i dati estratti tramite \gls{ia}. & UC8, UC9, UC10, UC11, UC12 \\ \hline
+    RFO-8 & L'utente deve poter rimuovere una foto precedentemente allegata. & UC13 \\ \hline
+    RFO-9 & L'utente deve poter aggiungere e accodare transazioni multiple all'interno di un singolo inserimento di nota spesa. & UC14, UC15, UC16 \\ \hline
+    RFO-10 & Il sistema deve gestire il salvataggio locale (offline) delle note in caso di assenza di rete o di scelta volontaria. & UC4.2, UC4.4 \\ \hline
+    RFO-11 & L'utente deve poter sincronizzare in blocco o singolarmente le note salvate in locale. & UC3, UC24 \\ \hline
+    RFO-12 & L'utente deve poter visualizzare le note spesa appartenenti a un singolo resoconto mensile & UC19 \\ \hline
+    RFO-13 & L'utente deve poter eliminare una nota spesa esistente, purché non sia storicizzata. & UC23 \\ \hline
+    RFO-14 & Il sistema deve impedire la modifica delle note spesa antecedenti alla data minima consentita. & UC22 \\ \hline
+    
+    RFD-1 & Il sistema deve gestire i conflitti tra i dati inseriti manualmente e quelli estratti dall'\gls{ia} tramite pop-up. & UC7.2, UC7.3, UC7.4 \\ \hline
+    RFD-2 & L'utente deve poter rimuovere una spesa salvata temporaneamente tramite inserimento multiplo. & UC17 \\ \hline
+    RFD-3 & Il sistema deve ricordare all'utente, all'avvio del modulo, la presenza di note locali non sincronizzate. & UC18 \\ \hline
+    RFD-4 & L'utente deve poter accedere alla modalità modifica di una nota spesa. & UC20 \\ \hline
+    RFD-5 &  L'utente deve poter modificare una nota spesa esistente. & UC21 \\ \hline
     RFD-6 & L'utente deve poter visualizzare i dati relativi alle proprie note spesa all'interno delle dashboard aziendali preesistenti & TODO \\
     \hline
     \hline
@@ -737,6 +869,21 @@ Per classificare i requisiti in modo univoco e strutturato, è stata adottata la
     %\rowcolor{hyperColor!5}
     \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Use Case}}\\
     \hline 
+    \endfirsthead
+    \rowcolor{white}
+    \multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continuo della tabella}}\\
+    \hline
+    %\rowcolor{hyperColor!5}
+    \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Use Case}}\\
+    \hline 
+    \endhead
+    \hline
+    \rowcolor{white}
+    \multicolumn{3}{|r|}{{Continua nella prossima pagina...}}\\
+    \hline
+    %\caption{Tabella del tracciamento dei requisiti qualitativi.}
+    \endfoot
+    \endlastfoot
     
     RVO-1 & Il software prodotto deve essere sviluppato in \gls{csharpg} utilizzando il framework \textit{cross-platform} \gls{dotnetmauig}. & - \\ \hline
     RVO-2 & L'interfaccia grafica deve essere realizzata tramite linguaggio di markup \gls{xamlg}, integrandosi nel design system dell'app \gls{ergteam}. & - \\ \hline
@@ -744,7 +891,7 @@ Per classificare i requisiti in modo univoco e strutturato, è stata adottata la
     RVO-4 & L'applicazione deve funzionare su dispositivi Android. & - \\ \hline
     RVO-5 & L'applicazione deve funzionare su dispositivi iOS. & - \\ \hline
     RVO-6 & I dati delle note spesa inviati al \textit{backend} devono integrarsi con l'ERP aziendale per la gestione amministrativa. & - \\ \hline
-    RVD-1 & Per il servizio di estrazione dati dalle immagini deve essere interrogata l'API di Azure Content Understanding. & - \\
+    RVO-7 & Per il servizio di estrazione dati dalle immagini deve essere interrogata l'API di Azure Content Understanding. & - \\
     \hline
     \hiderowcolors
     \caption{Tabella del tracciamento dei requisiti di vincolo.}
