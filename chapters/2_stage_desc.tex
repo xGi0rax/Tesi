@@ -6,7 +6,7 @@
 
 
 \section{Contesto aziendale}
-\noindent Durante il periodo di stage ho avuto modo di interagire costantemente con i membri del team di lavoro, in particolare con il tutor aziendale, il quale si è sempre dimostrato disponibile a fornire supporto e chiarimenti riguardo alle attività da svolgere e ai dubbi relativi al progetto. 
+\noindent Durante il periodo di stage ho avuto modo di interagire costantemente con i membri del team di lavoro, in particolare con il tutor aziendale, il quale si è sempre dimostrato disponibile a fornire supporto e chiarimenti sulle attività da svolgere e sui dubbi relativi al progetto. 
 Il confronto con il tutor avveniva principalmente in presenza, attraverso incontri periodici in cui venivano monitorati l'andamento del lavoro e le eventuali difficoltà incontrate. In tali occasioni venivano inoltre pianificate le attività successive, definendo in modo chiaro gli obiettivi da raggiungere. 
 Oltre agli incontri programmati, era possibile confrontarsi con il tutor per eventuali chiarimenti, garantendo così un supporto costante durante lo svolgimento delle attività.
 Il supporto del tutor si è rivelato utile per comprendere le dinamiche aziendali e le aspettative del progetto, favorendo un inserimento più consapevole nel contesto lavorativo. 
@@ -30,17 +30,17 @@ Sono state quindi elaborate delle possibili soluzioni per far fronte a tali crit
     \label{risk:compatibilita-cross-platform} 
 \end{risk}
 \begin{risk}{Problemi di comunicazione con le API REST}
-    \riskdescription{la comunicazione tra l'applicazione mobile e il sistema gestionale avverrà tramite \gls{apirestg}. Potrebbero verificarsi problemi di comunicazione, come errori di rete, problemi di autenticazione, timeout o errori nelle chiamate API, che potrebbero compromettere il corretto invio e recupero dei dati}
+    \riskdescription{la comunicazione tra l'applicazione mobile e il sistema gestionale avverrà tramite \gls{apirestg}. Potrebbero verificarsi problemi di comunicazione, come errori di rete, problemi di autenticazione, timeout o errori nelle chiamate \gls{apig}, che potrebbero compromettere il corretto invio e recupero dei dati}
     \riskprobability{media}
     \riskimpact{alto}
-    \risksolution{è importante implementare una gestione robusta degli errori e dei casi di fallimento nella comunicazione con le API, prevedendo meccanismi di retry, notifiche all'utente e log dettagliati per facilitare la diagnosi e la risoluzione dei problemi}
+    \risksolution{è importante implementare una gestione robusta degli errori e dei casi di fallimento nella comunicazione con le \gls{api}, prevedendo meccanismi di retry, notifiche all'utente e log dettagliati per facilitare la diagnosi e la risoluzione dei problemi}
     \label{risk:comunicazione-api-rest} 
 \end{risk}
 \begin{risk}{Gestione sincronizzazione dei dati ERP}
     \riskdescription{l'integrazione con il sistema \gls{erp} aziendale richiede una sincronizzazione accurata dei dati tra l'applicazione mobile e il gestionale. Potrebbero sorgere problemi legati alla compatibilità dei dati e alla corretta sincronizzazione delle informazioni tra i due sistemi}
     \riskprobability{media}
     \riskimpact{medio}
-    \risksolution{definire formati di dati chiari e standardizzati per la comunicazione tra l'applicazione mobile e il sistema ERP, implementando meccanismi di validazione dei dati e test progressivi sull'integrazione tramite casi d'uso realistici}
+    \risksolution{definire formati di dati chiari e standardizzati per la comunicazione tra l'applicazione mobile e il sistema \gls{erp}, implementando meccanismi di validazione dei dati e test progressivi sull'integrazione tramite casi d'uso realistici}
     \label{risk:sincronizzazione-dati-erp} 
 \end{risk}
 

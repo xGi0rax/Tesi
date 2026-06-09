@@ -9,7 +9,7 @@
 \begin{itemize}
     \item \textbf{Dipendente (Utente):} rappresenta un dipendente dell'azienda che ha già effettuato l'accesso all'applicazione \gls{ergteam} tramite le proprie credenziali. Esso interagisce con la nuova sezione per consultare lo storico delle proprie spese inserite e per inserire nuove note spesa da inoltrare al sistema.
     
-    \item \textbf{Azure Content Understanding (Sistema di \gls{ia}):} sistema esterno basato su intelligenza artificiale, interrogato dall'applicazione per l'estrazione automatica dei dati dalle fotografie degli scontrini, al fine di semplificare e velocizzare la compliazione della nota spesa da parte del dipendente.
+    \item \textbf{Azure Content Understanding (Sistema di IA):} sistema esterno basato su intelligenza artificiale, interrogato dall'applicazione per l'estrazione automatica dei dati dalle fotografie degli scontrini, al fine di semplificare e velocizzare la compliazione della nota spesa da parte del dipendente.
 \end{itemize}
 
 
@@ -552,7 +552,7 @@ Ognuno dei casi d'uso seguirà la seguente struttura:
 \begin{figure}[H]
     \vspace{2em}
     \centering
-    \includegraphics[alt={Scenario di inserimento multiplo in una nota spesa}, width=0.90\columnwidth]{img/usecase/UCMultiplo.jpg}
+    \includegraphics[alt={Scenario di inserimento multiplo in una nota spesa}, width=0.84\columnwidth]{img/usecase/UCMultiplo.jpg}
     \caption{Nota spesa: Inserimento multiplo}
     \label{fig:UCMultiplo}
 \end{figure}
@@ -875,6 +875,10 @@ Per classificare i requisiti in modo univoco e strutturato, è stata adottata la
     \multicolumn{3}{|r|}{{Continua nella prossima pagina...}}\\
     \hline
     \endfoot
+    \hline
+    \hiderowcolors
+    \caption{Tabella del tracciamento dei requisiti di vincolo.}
+    \label{tab:requisiti_vincolo}
     \endlastfoot
     
     RVO-1 & Il software prodotto deve essere sviluppato in \gls{csharpg} utilizzando il framework \textit{cross-platform} \gls{dotnetmauig}. & - \\ \hline
@@ -882,12 +886,9 @@ Per classificare i requisiti in modo univoco e strutturato, è stata adottata la
     RVO-3 & Il modulo \textit{backend} deve essere implementato aggiungendo i nuovi endpoint REST. & - \\ \hline
     RVO-4 & L'applicazione deve funzionare su dispositivi Android. & - \\ \hline
     RVO-5 & L'applicazione deve funzionare su dispositivi iOS. & - \\ \hline
-    RVO-6 & I dati delle note spesa inviati al \textit{backend} devono integrarsi con l'ERP aziendale per la gestione amministrativa. & - \\ \hline
-    RVO-7 & Per il servizio di estrazione dati dalle immagini deve essere interrogata l'API di Azure Content Understanding. & - \\
-    \hline
+    RVO-6 & I dati delle note spesa inviati al \textit{backend} devono integrarsi con l'\gls{erp} aziendale per la gestione amministrativa. & - \\ \hline
+    RVO-7 & Per il servizio di estrazione dati dalle immagini deve essere interrogata l'\gls{api} di Azure Content Understanding. & - \\
     \hiderowcolors
-    \caption{Tabella del tracciamento dei requisiti di vincolo.}
-    \label{tab:requisiti_vincolo}
     \end{longtable}
 \end{center}
 
@@ -920,3 +921,5 @@ Per classificare i requisiti in modo univoco e strutturato, è stata adottata la
     \label{tab:tracciamento_importanza_requisiti}
     \end{longtable}
 \end{center}
+
+\newpage
