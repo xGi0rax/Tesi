@@ -35,11 +35,11 @@ La risoluzione di queste problematiche ha richiesto un'attenta analisi dello sta
     \label{fig:maui}
 \end{figure}
 \noindent Considerati i requisiti del progetto e la necessità di mantenere coerenza con le tecnologie già adottate in azienda, l'approccio cross-platform è risultato il compromesso più adeguato tra produttività, manutenibilità e prestazioni. Per questo motivo, è stato utilizzato il framework \gls{dotnetmauig}. \newline
-Esso rappresenta la naturale evoluzione del framework \textit{Xamarin.Forms} ed è uno strumento open-source fornito da Microsoft che permette di sviluppare applicazioni cross-platform che vengono eseguite utilizzando controlli nativi delle piattaforme target. La logica di business dell'applicazione è scritta interamente in \gls{csharpg}, un linguaggio di programmazione multi-paradigma e orientato agli oggetti, noto per la sua robustezza e forte tipizzazione. \newline
+Esso rappresenta la naturale evoluzione del framework \textit{Xamarin.Forms} ed è uno strumento open-source fornito da Microsoft che permette di sviluppare applicazioni cross-platform che vengono eseguite utilizzando controlli nativi delle piattaforme target. La logica di business dell'applicazione è scritta interamente in \gls{csharpg} \cite{site:csharp}, un linguaggio di programmazione multi-paradigma e orientato agli oggetti, noto per la sua robustezza e forte tipizzazione. \newline
 La scelta di questa tecnologia, in accordo con gli standard aziendali di Ergon, è stata dettata dai seguenti fattori determinanti:
 \begin{itemize}
     \item \textbf{Unificazione del linguaggio:} l'\gls{erp} e i web services aziendali di Ergon sono storicamente sviluppati utilizzando l'ecosistema Microsoft e il linguaggio \gls{csharpg}. Utilizzare MAUI ha permesso di mantenere una coerenza tecnologica tra frontend e backend.
-    \item \textbf{Produttività e UI condivisa:} MAUI permette di definire l'interfaccia utente in un unico posto utilizzando il linguaggio \gls{xamlg}. Il framework si occupa poi di tradurre i componenti nei rispettivi controlli nativi di Android o iOS, garantendo all'utente un'esperienza familiare e coerente.
+    \item \textbf{Produttività e UI condivisa:} MAUI permette di definire l'interfaccia utente in un unico posto utilizzando il linguaggio \gls{xamlg} \cite{site:xaml}. Il framework si occupa poi di tradurre i componenti nei rispettivi controlli nativi di Android o iOS, garantendo all'utente un'esperienza familiare e coerente.
     \item \textbf{Supporto nativo al pattern MVVM:} MAUI è progettato per supportare nativamente il pattern architetturale \gls{mvvm}, che consente di separare in modo chiaro la logica di presentazione dalla logica di business, facilitando il testing e la manutenzione del codice.
 \end{itemize}
 
@@ -68,7 +68,7 @@ La scelta di questa tecnologia, in accordo con gli standard aziendali di Ergon, 
     \label{fig:sqlite}
 \end{figure}
 
-\noindent Per la gestione della persistenza locale è stato scelto \gls{sqliteg}, un database relazionale embedded ampiamente utilizzato nello sviluppo mobile. La scelta è motivata da diversi fattori:
+\noindent Per la gestione della persistenza locale è stato scelto \gls{sqliteg} \cite{site:sqlite} , un database relazionale embedded ampiamente utilizzato nello sviluppo mobile. La scelta è motivata da diversi fattori:
 \begin{itemize}
     \item \textbf{Organizzazione strutturata dei dati:} \gls{sqliteg} permette di memorizzare le informazioni all'interno di tabelle relazionali, facilitando la gestione delle note spesa e delle relative informazioni associate.
     \item \textbf{Leggerezza e affidabilità:} il database è progettato per funzionare direttamente sul dispositivo senza richiedere componenti server aggiuntivi, risultando leggero e affidabile anche in condizioni di risorse limitate come nel caso di dispositivi mobili.
@@ -97,7 +97,7 @@ L'adozione di questa tecnologia nel progetto è fondamentale per digitalizzare r
 \noindent Per implementare funzionalità di riconoscimento ottico dei caratteri in ambito mobile sono disponibili diverse soluzioni, che possono essere suddivise in due macro-categorie: librerie locali e servizi cloud.
 \begin{itemize}
     \item \textbf{Librerie locali:} consentono di eseguire l'elaborazione direttamente sul dispositivo dell'utente, senza la necessità di una connessione Internet. Questo approccio offre tempi di risposta immediati e riduce la dipendenza dalla rete, ma può risultare limitato nell'estrazione di informazioni strutturate da documenti complessi e richiede maggiori risorse computazionali sul dispositivo.
-    \item \textbf{Servizi cloud:} offrono soluzioni di riconoscimento ottico dei caratteri delegando l'elaborazione a infrastrutture remote specializzate. Questi servizi, come \textit{Google Cloud Vision} e le soluzioni offerte da \textit{Microsoft Azure}, permettono generalmente di ottenere livelli più elevati di accuratezza e di sfruttare i modelli avanzati per l'analisi documentale, semplificando l'estrazione di dati strutturati da documenti semi-strutturati come ricevute e scontrini. Tuttavia, richiedono una connessione Internet stabile e possono comportare costi aggiuntivi in base al volume di elaborazione richiesto.
+    \item \textbf{Servizi cloud:} offrono soluzioni di riconoscimento ottico dei caratteri delegando l'elaborazione a infrastrutture remote specializzate. Questi servizi, come \textit{Google Cloud Vision} \cite{site:google-cloud-vision} e le soluzioni offerte da \textit{Microsoft Azure} \cite{site:azure-content-understanding}, permettono generalmente di ottenere livelli più elevati di accuratezza e di sfruttare i modelli avanzati per l'analisi documentale, semplificando l'estrazione di dati strutturati da documenti semi-strutturati come ricevute e scontrini. Tuttavia, richiedono una connessione Internet stabile e possono comportare costi aggiuntivi in base al volume di elaborazione richiesto.
 \end{itemize}
 
 \subsection*{La scelta di Azure Content Understanding}
@@ -127,7 +127,7 @@ Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagi
     \caption{Architettura REST}
     \label{fig:rest-api}
 \end{figure}
-\noindent Per consentire all'applicazione mobile di dialogare con il server aziendale e sincronizzare le note spesa, è necessario implementare un'architettura di rete basata sui Web Services. La comunicazione tra i diversi componenti software distribuiti avviene tramite \gls{api}, le quali definiscono i protocolli, le regole di richiesta e le strutture di risposta. Nello specifico, lo standard di fatto adottato è lo stile architetturale REST, il quale impone una serie di vincoli progettuali per la comunicazione basata sulle richieste attraverso i metodi HTTP standard, come \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE}. Il trasferimento delle informazioni avviene scambiando pacchetti testuali nel formato \textit{JSON}, scelto per la sua enorme versatilità, leggerezza e per la capacità di essere elaborato facilmente dalle librerie standard. 
+\noindent Per consentire all'applicazione mobile di dialogare con il server aziendale e sincronizzare le note spesa, è necessario implementare un'architettura di rete basata sui Web Services. La comunicazione tra i diversi componenti software distribuiti avviene tramite \gls{api}, le quali definiscono i protocolli, le regole di richiesta e le strutture di risposta. Nello specifico, lo standard di fatto adottato è lo stile architetturale REST, il quale impone una serie di vincoli progettuali per la comunicazione basata sulle richieste attraverso i metodi HTTP standard, come \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE}. Il trasferimento delle informazioni avviene scambiando pacchetti testuali nel formato \textit{JSON} \cite{site:json}, scelto per la sua enorme versatilità, leggerezza e per la capacità di essere elaborato facilmente dalle librerie standard. 
 
 \subsection*{Comunicazione con l'ERP aziendale}
 \label{subsec:comunicazione-erp}
