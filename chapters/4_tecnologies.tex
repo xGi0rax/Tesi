@@ -131,20 +131,8 @@ Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagi
 
 \subsection*{Comunicazione con l'ERP aziendale}
 \label{subsec:comunicazione-erp}
-\noindent Nel contesto del progetto, le \gls{apirestg} rappresentano il punto di integrazione tra l'applicazione mobile e il sistema \gls{erp} aziendale. L'applicazione invia al backend le informazioni relative alle note spesa e riceve i dati necessari alla compilazione e alla validazione delle operazioni. Questo approccio consente di mantenere separati il livello di presentazione e le logiche di business del gestionale, favorendo la manutenibilità e l'evoluzione indipendente dei diversi componenti del sistema.
+\noindent Nel contesto del progetto, le \gls{apirestg} rappresentano il punto di integrazione tra l'applicazione mobile e il sistema \gls{erp} aziendale. L'applicazione invia al backend le informazioni relative alle note spesa e riceve i dati necessari alla compilazione e alla validazione delle operazioni. \newline 
+Per la realizzazione di questi servizi, in linea con lo standard tecnologico aziendale, è stato utilizzato il framework \gls{aspnetwebapig} (\cite{site:aspnet-webapi}), il quale consente di creare servizi web \textit{RESTful} in modo efficiente. Inoltre, per gestire l'accesso ai dati e la persistenza sul database relazionale centrale, è stato adottato \gls{entityframeworkg} (\cite{site:ef6}), garantendo sicurezza e integrità delle transazioni. Questo approccio consente di mantenere separati il livello di presentazione e le logiche di business del gestionale, favorendo la manutenibilità, la sicurezza e l'evoluzione indipendente dei diversi componenti del sistema.
 
-
-
-% \section{Pattern architetturali per la User Interface} 
-% \label{sec:pattern-architetturali}
-
-% \subsection*{Il pattern MVVM}
-% \label{subsec:pattern-mvvm}
-% \noindent Nella realizzazione di interfacce complesse, è cruciale mantenere una netta separazione tra la logica applicativa e la presentazione visiva al fine di garantire la manutenibilità del software nel tempo. Il pattern architetturale già adottato in ambito aziendale e scelto per l'implementazione dell'applicazione è l'\gls{mvvm}, un modello che scompone l'architettura in tre macro-componenti ben definiti. Il \textbf{Model} rappresenta le entità dei dati e il dominio del problema. La \textbf{View} costituisce l'interfaccia grafica con cui l'utente interagisce ed è scritta mediante il linguaggio di markup \gls{xamlg}. Il \textbf{ViewModel} agisce infine da ponte intermediario tra la \textit{View} e il \textit{Model}: espone i dati e i comandi per la \textit{View}, gestendo la logica e le modifiche di stato senza possedere alcun riferimento diretto o dipendenza verso gli elementi grafici dell'interfaccia.
-
-% \subsection*{Data Binding e MVVM in .NET MAUI}
-% \label{subsec:data-binding-mvvm}
-% \noindent Il meccanismo di Data Binding costituisce uno degli elementi fondamentali del pattern \gls{mvvm}. Esso consente di associare le proprietà esposte dal \textit{ViewModel} agli elementi grafici della \textit{View}, mantenendo automaticamente sincronizzati i dati tra i due livelli. In questo modo le modifiche effettuate dall'utente vengono propagate alla logica applicativa e, viceversa, gli aggiornamenti provenienti dal \textit{ViewModel} vengono riflessi immediatamente nell'interfaccia utente.
-% Nel progetto sviluppato, il Data Binding è stato utilizzato sia per visualizzare le informazioni che per collegare i campi della schermata di inserimento delle note spesa ai dati gestiti dal \textit{ViewModel}, riducendo il codice necessario per l'aggiornamento dell'interfaccia e migliorando la separazione delle responsabilità tra i diversi componenti dell'applicazione.
 
 \newpage
