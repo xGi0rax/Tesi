@@ -8,7 +8,7 @@ In primo luogo l'applicazione deve garantire fluidità e responsività su divers
 Inoltre, il progetto richiede di risolvere due problematiche tecniche di notevole importanza:
 \begin{itemize}
     \item \textbf{Funzionamento disconnesso (Offline):} i dipendenti in trasferta potrebbero aver bisogno di registrare una spesa in luoghi privi di connessione a internet. Il sistema deve quindi prevedere un'architettura in grado di salvare i dati localmente per poi sincronizzarli con i server aziendali in un secondo momento.
-    \item \textbf{Estrazione automatica dei dati:} per velocizzare l'inserimento, il sistema deve interfacciarsi con l'hardware del dispositivo (la fotocamera) e comunicare con un servizio cloud di \gls{ia} per l'analisi e l'estrazione del testo dai giustificativi cartacei tramite algoritmi di \gls{ocrg}.
+    \item \textbf{Estrazione automatica dei dati:} per velocizzare l'inserimento, il sistema deve interfacciarsi con l'hardware del dispositivo (la fotocamera) e comunicare con un servizio cloud di \gls{ia} per l'analisi e l'estrazione del testo dai giustificativi cartacei allegati.
 \end{itemize}
 La risoluzione di queste problematiche ha richiesto un'attenta analisi dello stato dell'arte delle tecnologie attuali, portando alle scelte progettuali descritte nei paragrafi successivi.
 
@@ -35,11 +35,11 @@ La risoluzione di queste problematiche ha richiesto un'attenta analisi dello sta
     \label{fig:maui}
 \end{figure}
 \noindent Considerati i requisiti del progetto e la necessità di mantenere coerenza con le tecnologie già adottate in azienda, l'approccio cross-platform è risultato il compromesso più adeguato tra produttività, manutenibilità e prestazioni. Per questo motivo, è stato utilizzato il framework \gls{dotnetmauig}. \newline
-Esso rappresenta la naturale evoluzione del framework \textit{Xamarin.Forms} ed è uno strumento open-source fornito da Microsoft che permette di sviluppare applicazioni cross-platform che vengono eseguite utilizzando controlli nativi delle piattaforme target. La logica di business dell'applicazione è scritta interamente in \gls{csharpg} \cite{site:csharp}, un linguaggio di programmazione multi-paradigma e orientato agli oggetti, noto per la sua robustezza e forte tipizzazione. \newline
+Esso rappresenta la naturale evoluzione del framework \textit{Xamarin.Forms} ed è uno strumento open-source fornito da Microsoft che permette di sviluppare applicazioni cross-platform che vengono eseguite utilizzando controlli nativi delle piattaforme target. La logica di business dell'applicazione è scritta interamente in \gls{csharpg} (\cite{site:csharp}), un linguaggio di programmazione multi-paradigma e orientato agli oggetti, noto per la sua robustezza e forte tipizzazione. \newline
 La scelta di questa tecnologia, in accordo con gli standard aziendali di Ergon, è stata dettata dai seguenti fattori determinanti:
 \begin{itemize}
-    \item \textbf{Unificazione del linguaggio:} l'\gls{erp} e i web services aziendali di Ergon sono storicamente sviluppati utilizzando l'ecosistema Microsoft e il linguaggio \gls{csharpg}. Utilizzare MAUI ha permesso di mantenere una coerenza tecnologica tra frontend e backend.
-    \item \textbf{Produttività e UI condivisa:} MAUI permette di definire l'interfaccia utente in un unico posto utilizzando il linguaggio \gls{xamlg} \cite{site:xaml}. Il framework si occupa poi di tradurre i componenti nei rispettivi controlli nativi di Android o iOS, garantendo all'utente un'esperienza familiare e coerente.
+    \item \textbf{Unificazione del linguaggio:} l'\gls{erp} e i web services aziendali di Ergon sono storicamente sviluppati utilizzando l'ecosistema Microsoft e il linguaggio \gls{csharpg}. Utilizzare MAUI ha permesso di mantenere una coerenza tecnologica tra \textit{frontend} e \textit{backend}.
+    \item \textbf{Produttività e UI condivisa:} MAUI permette di definire l'interfaccia utente in un unico posto utilizzando il linguaggio \gls{xamlg} (\cite{site:xaml}). Il framework si occupa poi di tradurre i componenti nei rispettivi controlli nativi di Android o iOS, garantendo all'utente un'esperienza familiare e coerente.
     \item \textbf{Supporto nativo al pattern MVVM:} MAUI è progettato per supportare nativamente il pattern architetturale \gls{mvvm}, che consente di separare in modo chiaro la logica di presentazione dalla logica di business, facilitando il testing e la manutenzione del codice.
 \end{itemize}
 
@@ -68,7 +68,7 @@ La scelta di questa tecnologia, in accordo con gli standard aziendali di Ergon, 
     \label{fig:sqlite}
 \end{figure}
 
-\noindent Per la gestione della persistenza locale è stato scelto \gls{sqliteg} \cite{site:sqlite} , un database relazionale embedded ampiamente utilizzato nello sviluppo mobile. La scelta è motivata da diversi fattori:
+\noindent Per la gestione della persistenza locale è stato scelto \gls{sqliteg} (\cite{site:sqlite}), un database relazionale \gls{embeddedg} ampiamente utilizzato nello sviluppo mobile. La scelta è motivata da diversi fattori:
 \begin{itemize}
     \item \textbf{Organizzazione strutturata dei dati:} \gls{sqliteg} permette di memorizzare le informazioni all'interno di tabelle relazionali, facilitando la gestione delle note spesa e delle relative informazioni associate.
     \item \textbf{Leggerezza e affidabilità:} il database è progettato per funzionare direttamente sul dispositivo senza richiedere componenti server aggiuntivi, risultando leggero e affidabile anche in condizioni di risorse limitate come nel caso di dispositivi mobili.
@@ -97,7 +97,7 @@ L'adozione di questa tecnologia nel progetto è fondamentale per digitalizzare r
 \noindent Per implementare funzionalità di riconoscimento ottico dei caratteri in ambito mobile sono disponibili diverse soluzioni, che possono essere suddivise in due macro-categorie: librerie locali e servizi cloud.
 \begin{itemize}
     \item \textbf{Librerie locali:} consentono di eseguire l'elaborazione direttamente sul dispositivo dell'utente, senza la necessità di una connessione Internet. Questo approccio offre tempi di risposta immediati e riduce la dipendenza dalla rete, ma può risultare limitato nell'estrazione di informazioni strutturate da documenti complessi e richiede maggiori risorse computazionali sul dispositivo.
-    \item \textbf{Servizi cloud:} offrono soluzioni di riconoscimento ottico dei caratteri delegando l'elaborazione a infrastrutture remote specializzate. Questi servizi, come \textit{Google Cloud Vision} \cite{site:google-cloud-vision} e le soluzioni offerte da \textit{Microsoft Azure} \cite{site:azure-content-understanding}, permettono generalmente di ottenere livelli più elevati di accuratezza e di sfruttare i modelli avanzati per l'analisi documentale, semplificando l'estrazione di dati strutturati da documenti semi-strutturati come ricevute e scontrini. Tuttavia, richiedono una connessione Internet stabile e possono comportare costi aggiuntivi in base al volume di elaborazione richiesto.
+    \item \textbf{Servizi cloud:} offrono soluzioni di riconoscimento ottico dei caratteri delegando l'elaborazione a infrastrutture remote specializzate. Questi servizi, come \textit{Google Cloud Vision} (\cite{site:google-cloud-vision}) e le soluzioni offerte da \textit{Microsoft Azure} (\cite{site:azure}), permettono generalmente di ottenere livelli più elevati di accuratezza e di sfruttare i modelli avanzati per l'analisi documentale, semplificando l'estrazione di dati strutturati da documenti semi-strutturati come ricevute e scontrini. Tuttavia, richiedono una connessione Internet stabile e possono comportare costi aggiuntivi in base al volume di elaborazione richiesto.
 \end{itemize}
 
 \subsection*{La scelta di Azure Content Understanding}
@@ -110,7 +110,7 @@ L'adozione di questa tecnologia nel progetto è fondamentale per digitalizzare r
     \label{fig:azure-content-understanding}
 \end{figure}
 
-\noindent Per implementare la funzionalità di estrazione automatica dei dati dai giustificativi di spesa, la scelta è ricaduta su \gls{azurecontentunderstandingg}. Tale decisione è stata guidata principalmente dalla necessità di integrarsi in modo coerente con l'ecosistema Microsoft già ampiamente adottato all'interno di Ergon. Rispetto alle soluzioni \gls{ocr} eseguite localmente sul dispositivo, l'utilizzo di un servizio cloud consente di sfruttare modelli di \gls{ia} avanzati senza trasferire sul dispositivo l'onere dell'elaborazione. Inoltre, \gls{azurecontentunderstandingg} non si limita al semplice riconoscimento del testo, ma è in grado di identificare ed estrarre automaticamente informazioni significative dal documento, restituendo dati già strutturati e pronti per essere utilizzati dall'applicazione. \\
+\noindent Per implementare la funzionalità di estrazione automatica dei dati dai giustificativi di spesa, la scelta è ricaduta su \gls{azurecontentunderstandingg} (\cite{site:azure-content-understanding}). Tale decisione è stata guidata principalmente dalla necessità di integrarsi in modo coerente con l'ecosistema Microsoft già ampiamente adottato all'interno di Ergon. Rispetto alle soluzioni \gls{ocr} eseguite localmente sul dispositivo, l'utilizzo di un servizio cloud consente di sfruttare modelli di \gls{ia} avanzati senza trasferire sul dispositivo l'onere dell'elaborazione. Inoltre, \gls{azurecontentunderstandingg} non si limita al semplice riconoscimento del testo, ma è in grado di identificare ed estrarre automaticamente informazioni significative dal documento, restituendo dati già strutturati e pronti per essere utilizzati dall'applicazione. \\
 Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagini degli scontrini e ricavare automaticamente informazioni quali importo, data, ora, numero del documento, ragione sociale e partita IVA dell'esercente. I dati ottenuti vengono quindi utilizzati per compilare automaticamente i campi della nota spesa, riducendo il tempo necessario all'inserimento e limitando il rischio di errori manuali.
 
 
@@ -118,7 +118,7 @@ Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagi
 \section{Architetture di rete e scambio dati}
 \label{sec:architettura-rete}
 
-\subsection*{Web Services e API REST}
+\subsection*{Web services e API REST}
 \label{subsec:teoria-rest}
 \begin{figure}[H]
     \vspace{2em}
@@ -127,7 +127,7 @@ Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagi
     \caption{Architettura REST}
     \label{fig:rest-api}
 \end{figure}
-\noindent Per consentire all'applicazione mobile di dialogare con il server aziendale e sincronizzare le note spesa, è necessario implementare un'architettura di rete basata sui Web Services. La comunicazione tra i diversi componenti software distribuiti avviene tramite \gls{api}, le quali definiscono i protocolli, le regole di richiesta e le strutture di risposta. Nello specifico, lo standard di fatto adottato è lo stile architetturale REST, il quale impone una serie di vincoli progettuali per la comunicazione basata sulle richieste attraverso i metodi HTTP standard, come \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE}. Il trasferimento delle informazioni avviene scambiando pacchetti testuali nel formato \textit{JSON} \cite{site:json}, scelto per la sua enorme versatilità, leggerezza e per la capacità di essere elaborato facilmente dalle librerie standard. 
+\noindent Per consentire all'applicazione mobile di dialogare con il server aziendale e sincronizzare le note spesa, è necessario implementare un'architettura di rete basata sui web services. La comunicazione tra i diversi componenti software distribuiti avviene tramite \gls{api}, le quali definiscono i protocolli, le regole di richiesta e le strutture di risposta. Nello specifico, lo standard di fatto adottato è lo stile architetturale REST, il quale impone una serie di vincoli progettuali per la comunicazione basata sulle richieste attraverso i metodi HTTP standard, come \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE}. Il trasferimento delle informazioni avviene scambiando pacchetti testuali nel formato \textit{JSON} (\cite{site:json}), scelto per la sua enorme versatilità, leggerezza e per la capacità di essere elaborato facilmente dalle librerie standard. 
 
 \subsection*{Comunicazione con l'ERP aziendale}
 \label{subsec:comunicazione-erp}
@@ -135,16 +135,16 @@ Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagi
 
 
 
-\section{Pattern architetturali per la User Interface} 
-\label{sec:pattern-architetturali}
+% \section{Pattern architetturali per la User Interface} 
+% \label{sec:pattern-architetturali}
 
-\subsection*{Il pattern MVVM}
-\label{subsec:pattern-mvvm}
-\noindent Nella realizzazione di interfacce complesse, è cruciale mantenere una netta separazione tra la logica applicativa e la presentazione visiva al fine di garantire la manutenibilità del software nel tempo. Il pattern architetturale scelto per l'implementazione dell'applicazione è l'\gls{mvvm}, un modello che scompone l'architettura in tre macro-componenti ben definiti. Il \textbf{Model} rappresenta le entità dei dati e il dominio del problema. La \textbf{View} costituisce l'interfaccia grafica con cui l'utente interagisce ed è scritta mediante il linguaggio di markup \gls{xamlg}. Il \textbf{ViewModel} agisce infine da ponte intermediario tra la View e il Model: espone i dati e i comandi per la view, gestendo la logica e le modifiche di stato senza possedere alcun riferimento diretto o dipendenza verso gli elementi grafici dell'interfaccia.
+% \subsection*{Il pattern MVVM}
+% \label{subsec:pattern-mvvm}
+% \noindent Nella realizzazione di interfacce complesse, è cruciale mantenere una netta separazione tra la logica applicativa e la presentazione visiva al fine di garantire la manutenibilità del software nel tempo. Il pattern architetturale già adottato in ambito aziendale e scelto per l'implementazione dell'applicazione è l'\gls{mvvm}, un modello che scompone l'architettura in tre macro-componenti ben definiti. Il \textbf{Model} rappresenta le entità dei dati e il dominio del problema. La \textbf{View} costituisce l'interfaccia grafica con cui l'utente interagisce ed è scritta mediante il linguaggio di markup \gls{xamlg}. Il \textbf{ViewModel} agisce infine da ponte intermediario tra la \textit{View} e il \textit{Model}: espone i dati e i comandi per la \textit{View}, gestendo la logica e le modifiche di stato senza possedere alcun riferimento diretto o dipendenza verso gli elementi grafici dell'interfaccia.
 
-\subsection*{Data Binding e MVVM in .NET MAUI}
-\label{subsec:data-binding-mvvm}
-\noindent Il meccanismo di Data Binding costituisce uno degli elementi fondamentali del pattern \gls{mvvm}. Esso consente di associare le proprietà esposte dal ViewModel agli elementi grafici della View, mantenendo automaticamente sincronizzati i dati tra i due livelli. In questo modo le modifiche effettuate dall'utente vengono propagate alla logica applicativa e, viceversa, gli aggiornamenti provenienti dal ViewModel vengono riflessi immediatamente nell'interfaccia utente.
-Nel progetto sviluppato, il Data Binding è stato utilizzato per collegare i campi delle schermate di inserimento delle note spesa ai dati gestiti dal ViewModel, riducendo il codice necessario per l'aggiornamento dell'interfaccia e migliorando la separazione delle responsabilità tra i diversi componenti dell'applicazione.
+% \subsection*{Data Binding e MVVM in .NET MAUI}
+% \label{subsec:data-binding-mvvm}
+% \noindent Il meccanismo di Data Binding costituisce uno degli elementi fondamentali del pattern \gls{mvvm}. Esso consente di associare le proprietà esposte dal \textit{ViewModel} agli elementi grafici della \textit{View}, mantenendo automaticamente sincronizzati i dati tra i due livelli. In questo modo le modifiche effettuate dall'utente vengono propagate alla logica applicativa e, viceversa, gli aggiornamenti provenienti dal \textit{ViewModel} vengono riflessi immediatamente nell'interfaccia utente.
+% Nel progetto sviluppato, il Data Binding è stato utilizzato sia per visualizzare le informazioni che per collegare i campi della schermata di inserimento delle note spesa ai dati gestiti dal \textit{ViewModel}, riducendo il codice necessario per l'aggiornamento dell'interfaccia e migliorando la separazione delle responsabilità tra i diversi componenti dell'applicazione.
 
 \newpage
