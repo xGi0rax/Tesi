@@ -34,7 +34,7 @@ La risoluzione di queste problematiche ha richiesto un'attenta analisi dello sta
     \caption{.NET MAUI}
     \label{fig:maui}
 \end{figure}
-\noindent Considerati i requisiti del progetto e la necessità di mantenere coerenza con le tecnologie già adottate in azienda, l'approccio cross-platform è risultato il compromesso più adeguato tra produttività, manutenibilità e prestazioni. Per questo motivo, è stato utilizzato il framework \gls{dotnetmauig} (\cite{site:dotnet-maui}). \newline
+\noindent Considerati i requisiti del progetto e la necessità di mantenere coerenza con le tecnologie già adottate in azienda, l'approccio cross-platform è risultato il compromesso più adeguato tra produttività, manutenibilità e prestazioni. Per questo motivo, è stato utilizzato il framework \gls{dotnetmauig} (\cite{site:dotnet-maui}), che supporta le piattaforme mostrate in Figura \ref{fig:maui}. \newline
 Esso rappresenta la naturale evoluzione del framework \textit{Xamarin.Forms} ed è uno strumento open-source fornito da Microsoft che permette di sviluppare applicazioni cross-platform che vengono eseguite utilizzando controlli nativi delle piattaforme target. La logica di business dell'applicazione è scritta interamente in \gls{csharpg} (\cite{site:csharp}), un linguaggio di programmazione multi-paradigma e orientato agli oggetti, noto per la sua robustezza e forte tipizzazione. \newline
 La scelta di questa tecnologia, in accordo con gli standard aziendali di Ergon, è stata dettata dai seguenti fattori determinanti:
 \begin{itemize}
@@ -68,7 +68,7 @@ La scelta di questa tecnologia, in accordo con gli standard aziendali di Ergon, 
     \label{fig:sqlite}
 \end{figure}
 
-\noindent Per la gestione della persistenza locale è stato scelto \gls{sqliteg} (\cite{site:sqlite}), un database relazionale \gls{embeddedg} ampiamente utilizzato nello sviluppo mobile. La scelta è motivata da diversi fattori:
+\noindent Per la gestione della persistenza locale è stato scelto \gls{sqliteg} (\cite{site:sqlite}), un database relazionale \gls{embeddedg} ampiamente utilizzato nello sviluppo mobile, il cui logo è riportato in Figura \ref{fig:sqlite}. La scelta è motivata da diversi fattori:
 \begin{itemize}
     \item \textbf{Organizzazione strutturata dei dati:} \gls{sqliteg} permette di memorizzare le informazioni all'interno di tabelle relazionali, facilitando la gestione delle note spesa e delle relative informazioni associate.
     \item \textbf{Leggerezza e affidabilità:} il database è progettato per funzionare direttamente sul dispositivo senza richiedere componenti server aggiuntivi, risultando leggero e affidabile anche in condizioni di risorse limitate come nel caso di dispositivi mobili.
@@ -107,10 +107,10 @@ L'adozione di questa tecnologia nel progetto è fondamentale per digitalizzare r
     \centering
     \includegraphics[alt={Azure}, width=0.40\columnwidth]{img/azure.jpg}
     \caption{Logo di Azure}
-    \label{fig:azure-content-understanding}
+    \label{fig:azure}
 \end{figure}
 
-\noindent Per implementare la funzionalità di estrazione automatica dei dati dai giustificativi di spesa, la scelta è ricaduta su \gls{azurecontentunderstandingg} (\cite{site:azure-content-understanding}). Tale decisione è stata guidata principalmente dalla necessità di integrarsi in modo coerente con l'ecosistema Microsoft già ampiamente adottato all'interno di Ergon. Rispetto alle soluzioni \gls{ocr} eseguite localmente sul dispositivo, l'utilizzo di un servizio cloud consente di sfruttare modelli di \gls{ia} avanzati senza trasferire sul dispositivo l'onere dell'elaborazione. Inoltre, \gls{azurecontentunderstandingg} non si limita al semplice riconoscimento del testo, ma è in grado di identificare ed estrarre automaticamente informazioni significative dal documento, restituendo dati già strutturati e pronti per essere utilizzati dall'applicazione. \\
+\noindent Per implementare la funzionalità di estrazione automatica dei dati dai giustificativi di spesa, la scelta è ricaduta su \gls{azurecontentunderstandingg} (\cite{site:azure-content-understanding}), un servizio di analisi documentale di Microsoft facente parte dell'ecosistema Azure, di cui il logo è mostrato in Figura \ref{fig:azure}. Tale decisione è stata guidata principalmente dalla necessità di integrarsi in modo coerente con l'ecosistema Microsoft già ampiamente adottato all'interno di Ergon. Rispetto alle soluzioni \gls{ocr} eseguite localmente sul dispositivo, l'utilizzo di un servizio cloud consente di sfruttare modelli di \gls{ia} avanzati senza trasferire sul dispositivo l'onere dell'elaborazione. Inoltre, \gls{azurecontentunderstandingg} non si limita al semplice riconoscimento del testo, ma è in grado di identificare ed estrarre automaticamente informazioni significative dal documento, restituendo dati già strutturati e pronti per essere utilizzati dall'applicazione. \\
 Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagini degli scontrini e ricavare automaticamente informazioni quali importo, data, ora, numero del documento, ragione sociale e partita IVA dell'esercente. I dati ottenuti vengono quindi utilizzati per compilare automaticamente i campi della nota spesa, riducendo il tempo necessario all'inserimento e limitando il rischio di errori manuali.
 
 
@@ -127,7 +127,7 @@ Nel contesto del progetto, il servizio viene utilizzato per analizzare le immagi
     \caption{Architettura REST}
     \label{fig:rest-api}
 \end{figure}
-\noindent Per consentire all'applicazione mobile di dialogare con il server aziendale e sincronizzare le note spesa, è necessario implementare un'architettura di rete basata sui web services. La comunicazione tra i diversi componenti software distribuiti avviene tramite \gls{api}, le quali definiscono i protocolli, le regole di richiesta e le strutture di risposta. Nello specifico, lo standard di fatto adottato è lo stile architetturale REST, il quale impone una serie di vincoli progettuali per la comunicazione basata sulle richieste attraverso i metodi HTTP standard, come \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE}. Il trasferimento delle informazioni avviene scambiando pacchetti testuali nel formato \textit{JSON} (\cite{site:json}), scelto per la sua enorme versatilità, leggerezza e per la capacità di essere elaborato facilmente dalle librerie standard. 
+\noindent Come illustrato nello schema in Figura \ref{fig:rest-api}, per consentire all'applicazione mobile di dialogare con il server aziendale e sincronizzare le note spesa, è necessario implementare un'architettura di rete basata sui web services. La comunicazione tra i diversi componenti software distribuiti avviene tramite \gls{api}, le quali definiscono i protocolli, le regole di richiesta e le strutture di risposta. Nello specifico, lo standard di fatto adottato è lo stile architetturale REST, il quale impone una serie di vincoli progettuali per la comunicazione basata sulle richieste attraverso i metodi HTTP standard, come \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE}. Il trasferimento delle informazioni avviene scambiando pacchetti testuali nel formato \textit{JSON} (\cite{site:json}), scelto per la sua enorme versatilità, leggerezza e per la capacità di essere elaborato facilmente dalle librerie standard.  
 
 \subsection*{Comunicazione con l'ERP aziendale}
 \label{subsec:comunicazione-erp}
