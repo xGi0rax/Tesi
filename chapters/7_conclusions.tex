@@ -1,34 +1,134 @@
 \chapter{Conclusioni}
 \label{chap:conclusioni}
 
-\section{Consuntivo finale}
-Esempio di aggiunta di un termine con glossario e acronimo:\\
-Lorem \gls{sdk} ispum dolor.
+\section{Considerazioni finali}
+\noindent Il progetto di stage, della durata complessiva di trecento ore, si è concluso con successo e ha permesso di sviluppare e integrare il modulo completo e funzionale per la gestione delle note spesa aziendali all'interno dell'applicazione \gls{ergteam}. L'applicativo ha raggiunto l'obiettivo primario di modernizzare e snellire i processi amministrativi, riducendo l'uso del cartaceo e automatizzando l'inserimento dei dati grazie all'intelligenza artificiale. \\
+Durante il percorso di sviluppo sono stati affrontati e risolti vari problemi tecnici e progettuali, mantenendo sempre una forte attenzione alla qualità del codice, alla reattività dell'interfaccia e all'esperienza utente. Particolare rilevanza è stata data all'implementazione di un'architettura "offline-first", garantendo la totale continuità operativa del lavoratore anche in condizioni di assenza di connettività di rete, e alla gestione sicura e crittografata dei dati sensibili in transito.
+Il sistema finale è stato progettato per essere robusto, scalabile e facilmente manutenibile nel tempo, grazie alla rigorosa applicazione del pattern architetturale \gls{mvvm}. Questa scelta ha consentito una gestione modulare delle diverse componenti, separando in modo netto la logica di business dal livello di presentazione e consegnando all'azienda un prodotto moderno, efficiente e pronto per l'utilizzo in produzione.
 
-Nel successivo utilizzo, apparirà solo l'acronimo:\\
-Lorem \gls{sdk}.
 
-Nel caso si voglia invece mettere solo il termine per esteso, si può usare:\\
-Lorem \gls{sdkg}.
 
 \section{Raggiungimento degli obiettivi}
-Esempio di termine con solo acronimo\\
-Lorem \gls{tsa}, ipsum dolor sit amet
+\noindent Al termine delle fasi di sviluppo, collaudo e validazione con il tutor aziendale, è stato verificato lo stato di implementazione di ogni singola funzionalità rispetto a quanto pattuito in fase di analisi nel Capitolo \ref{chap:analisi-requisiti}. Tutti gli obiettivi prefissati sono stati raggiunti con successo, come evidenziato nelle tabelle \ref{tab:conclusione_requisiti_funzionali}, \ref{tab:conclusione_requisiti_qualitativi} e \ref{tab:conclusione_requisiti_vincolo}, che riportano lo stato di soddisfacimento dei requisiti funzionali, qualitativi e di vincolo.
 
-termine costruito senza acronimo:
-Lorem \gls{TermineSenzaAcronimo}, ipsum dolor sit amet
+\begin{center}
+    \rowcolors{1}{}{tableGray}
+    \begin{longtable}{|p{2.15cm}|p{7.75cm}|p{2.35cm}|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Stato}}\\
+    \hline 
+    \endfirsthead
+    \rowcolor{white}
+    \multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continuo della tabella}}\\
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Stato}}\\
+    \hline 
+    \endhead
+    \hline
+    \rowcolor{white}
+    \multicolumn{3}{|r|}{{Continua nella prossima pagina...}}\\
+    \hline
+    \endfoot
+    \endlastfoot
+    
+    RFO-1 & Visualizzazione lista resoconti mensili. & Soddisfatto \\ \hline
+    RFO-2 & Possibilità di filtrare i resoconti mensili per anno. & Soddisfatto \\ \hline
+    RFO-3 & Inserimento di una nuova nota spesa. & Soddisfatto \\ \hline
+    RFO-4 & Validazione dei dati inseriti e annullamento salvataggio. & Soddisfatto \\ \hline
+    RFO-5 & Inserimento descrizione nota spesa. & Soddisfatto \\ \hline
+    RFO-6 & Possibilità di allegare una fotografia per estrazione dati con \gls{ia}. & Soddisfatto \\ \hline
+    RFO-7 & Visualizzazione e modifica dati estratti. & Soddisfatto \\ \hline
+    RFO-8 & Rimozione foto precedentemente allegata. & Soddisfatto \\ \hline
+    RFO-9 & Aggiunta transazioni multiple. & Soddisfatto \\ \hline
+    RFO-10 & Gestione del salvataggio locale e offline. & Soddisfatto \\ \hline
+    RFO-11 & Sincronizzazione in blocco o singolarmente delle note spesa. & Soddisfatto \\ \hline
+    RFO-12 & Visualizzazione lista note spesa di un resoconto mensile. & Soddisfatto \\ \hline
+    RFO-13 & Eliminazione nota spesa esistente. & Soddisfatto \\ \hline
+    RFO-14 & Impedimento modifica note spesa antecedenti alla data minima consentita. & Soddisfatto \\ \hline
+    
+    RFD-1 & Gestione dei conflitti tra dati inseriti manualmente e dati estratti dall'\gls{ia}. & Soddisfatto \\ \hline
+    RFD-2 & Possibilità di rimozione spesa salvata temporaneamente tramite inserimento multiplo. & Soddisfatto \\ \hline
+    RFD-3 & Promemoria presenza note locali non sincronizzate. & Soddisfatto \\ \hline
+    RFD-4 & Possibilità di modificare una nota spesa. & Soddisfatto \\ \hline
+    RFD-5 & Salvataggio modifiche a una nota spesa esistente. & Soddisfatto \\ \hline
+    \hiderowcolors
+    \caption{Tracciamento dello stato dei requisiti funzionali.}
+    \label{tab:conclusione_requisiti_funzionali}
+    \end{longtable}
+\end{center}
+
+\begin{center}
+    \rowcolors{1}{}{tableGray}
+    \begin{longtable}{|p{2.15cm}|p{7.75cm}|p{2.35cm}|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Stato}}\\
+    \hline 
+    \endfirsthead
+    \rowcolor{white}
+    \multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continuo della tabella}}\\
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Stato}}\\
+    \hline 
+    \endhead
+    \hline
+    \rowcolor{white}
+    \multicolumn{3}{|r|}{{Continua nella prossima pagina...}}\\
+    \hline
+    \endfoot
+    \endlastfoot
+    
+    RQO-1 & Comunicazione chiara dello stato delle operazioni tramite messaggi bloccanti o temporanei. & Soddisfatto \\ \hline
+    RQO-2 & Architettura del codice \textit{frontend} rispetta il pattern \gls{mvvm}. & Soddisfatto \\ \hline
+    RQO-3 & Test di accettazione per validare le funzionalità. & Soddisfatto \\ \hline
+    RQO-4 & Realizzazione manuale utente per l'utilizzo dell'applicazione. & Soddisfatto \\ \hline
+    RQD-1 & Commento adeguato del codice per facilitarne la manutenzione. & Soddisfatto \\ \hline
+    \hiderowcolors
+    \caption{Tracciamento dello stato dei requisiti qualitativi.}
+    \label{tab:conclusione_requisiti_qualitativi}
+    \end{longtable}
+\end{center}
+
+\begin{center}
+    \rowcolors{1}{}{tableGray}
+    \begin{longtable}{|p{2.15cm}|p{7.75cm}|p{2.35cm}|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Stato}}\\
+    \hline 
+    \endfirsthead
+    \rowcolor{white}
+    \multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- Continuo della tabella}}\\
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Requisito}} & \multicolumn{1}{c|}{\textbf{Descrizione}} & \multicolumn{1}{c|}{\textbf{Stato}}\\
+    \hline 
+    \endhead
+    \hline
+    \rowcolor{white}
+    \multicolumn{3}{|r|}{{Continua nella prossima pagina...}}\\
+    \hline
+    \endfoot
+    \endlastfoot
+    
+    RVO-1 & Sviluppo in \gls{csharpg} utilizzando il framework \textit{cross-platform} \gls{dotnetmauig}. & Soddisfatto \\ \hline
+    RVO-2 & Interfaccia grafica realizzata con \gls{xamlg}. & Soddisfatto \\ \hline
+    RVO-3 & Nuovi endpoint REST nel \textit{backend}. & Soddisfatto \\ \hline
+    RVO-4 & L'applicazione deve funzionare su dispositivi Android. & Soddisfatto \\ \hline
+    RVO-5 & L'applicazione deve funzionare su dispositivi iOS. & Soddisfatto \\ \hline
+    RVO-6 & Dati delle note spesa devono integrarsi con l'\gls{erp} aziendale. & Soddisfatto \\ \hline
+    RVO-7 & Interrogazione dell'\gls{api} di Azure Content Understanding per estrazione dati. & Soddisfatto \\ \hline
+    \hiderowcolors
+    \caption{Tracciamento dello stato dei requisiti di vincolo.}
+    \label{tab:conclusione_requisiti_vincolo}
+    \end{longtable}
+\end{center}
+
 
 \section{Conoscenze acquisite}
-Lorem Ipsum dolor Lorem \gls{api}
-
-Lorem Ipsum dolor Lorem \gls{apig}
-
-Si può consultare il file \textit{glossary\_acronyms.tex} per alcuni esempi.
-
-\section{Valutazione personale}
+\noindent Durante lo sviluppo del progetto, ho avuto l'opportunità di acquisire e consolidare competenze avanzate in diverse aree dell'ingegneria del software. Dal punto di vista tecnico, l'apprendimento del framework \gls{dotnetmauig} e dei linguaggi \gls{csharpg} e \gls{xamlg} mi ha permesso di comprendere a fondo come progettare e realizzare un'applicazione mobile cross-platform moderna, applicando rigorosamente il pattern architetturale \gls{mvvm}. L'integrazione del database locale \gls{sqliteg} per garantire un'architettura "offline-first" e l'utilizzo delle \gls{api} di \gls{azurecontentunderstandingg} per l'estrazione dei dati tramite intelligenza artificiale hanno rappresentato sfide altamente stimolanti che hanno arricchito notevolmente il mio bagaglio tecnologico.
+Oltre alle competenze puramente informatiche, l'inserimento in un contesto aziendale dinamico mi ha permesso di migliorare in modo significativo le mie competenze trasversali. Ho avuto modo di affinare le mie capacità di problem solving affrontando ostacoli reali, imparando a pianificare le attività di sviluppo rispettando le scadenze e comprendendo l'importanza del lavoro in team e della comunicazione continua con il tutor aziendale.
 
 
 \section{Valutazione personale}
+\noindent Questo stage ha rappresentato un'opportunità formativa preziosa, permettendomi di consolidare le conoscenze apprese durante il percorso accademico e di metterle in pratica in un contesto aziendale reale. La progettazione e lo sviluppo dell'applicazione mobile hanno richiesto un impegno costante, applicando praticamente le conoscenze acquisite per gestire l'intero ciclo di vita di un prodotto software, dall'analisi dei requisiti fino al collaudo finale. L'ambiente di Ergon Informatica si è rivelato estremamente accogliente e stimolante: la collaborazione continua con il tutor e altri colleghi ha arricchito ulteriormente l'esperienza, insegnandomi l'importanza della comunicazione e della pianificazione nello sviluppo software. Nel complesso, sono molto soddisfatto dei risultati ottenuti e sono fiducioso che le competenze acquisite avranno un impatto altamente positivo sul mio futuro professionale.
 
 
 \newpage
